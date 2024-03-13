@@ -15,12 +15,17 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage'
+
+
 import { AddProductComponent } from './admin/add-product/add-product.component';
+import { ListProductComponent } from './admin/list-product/list-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddProductComponent
+    AddProductComponent,
+    ListProductComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,7 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
