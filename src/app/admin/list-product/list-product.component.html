@@ -1,7 +1,53 @@
-<div *ngFor="let product of products">
-    <p>{{product.name}}</p>
-    <p>{{product.description}}</p>
-    <p>{{product.category}}</p>
-    <p>{{product.price}}</p>
-    <p>{{product.image}}</p>
-</div>
+<style>
+    /* CSS styles for product blocks */
+    .container{
+      padding-left: 252px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* Space between products */
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      width: 300px;
+    }
+
+    .product img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .product h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+
+    .product p {
+      font-size: 1em;
+    }
+  </style>
+
+<body>
+  <div class="container">
+    <ng-container *ngFor="let product of products">
+      <ng-container *ngIf="product.children && product.children.length > 0; else productBlock">
+        <div class="product">
+          <h2>{{ product.name }}</h2>
+          <ng-container *ngTemplateOutlet="productBlock; context: { $implicit: product.children }"></ng-container>
+        </div>
+      </ng-container>
+      <ng-template #productBlock>
+        <div class="product">
+          <img [src]="product.image" [alt]="product.name">
+          <h2>{{ product.name }}</h2>
+          <p>{{ product.description }}</p>
+          <p>Price: $ {{ product.price }}</p>
+          <p>Quantidade:  {{ product.quantity }}</p>
+          <button (click)="goToEdit(product)">Editar</button>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+  </body>

@@ -8,7 +8,8 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.css'
+  styleUrl: './add-product.component.css',
+  host: {ngSkipHydration: 'true'},
 })
 export class AddProductComponent {
   data: string;

@@ -5,7 +5,7 @@
 </style>
 
 <div class="formulario">
-    <form [formGroup]="addForm" (ngSubmit)="submitForm()">
+    <form [formGroup]="editForm" (ngSubmit)="submitForm()">
       <label>Nome</label>
       <input type="text" formControlName="name"><br>
       <label>Categoria</label>
@@ -17,7 +17,8 @@
       <label>Quantidade</label>
       <input type="text" formControlName="quantity"><br>
       <label>Imagem</label>
-      <input type="file" formControlName="images" multiple><br>
-      <button type="submit">criar produto</button>
+      <input type="file" multiple><br>
+      <button type="submit">Editar produto</button>
+      <button type="button" (click)="delete()">Excluir</button>
     </form>
   </div>
