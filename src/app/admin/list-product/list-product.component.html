@@ -31,6 +31,10 @@
 
 <body>
   <div class="container">
+    <form [formGroup]="searchForm" (ngSubmit)="submitForm()"> 
+      <input type="search" formControlName="name" placeholder="digite o nome">
+      <button type="submit">procurar</button>
+    </form>
     <ng-container *ngFor="let product of products">
       <ng-container *ngIf="product.children && product.children.length > 0; else productBlock">
         <div class="product">

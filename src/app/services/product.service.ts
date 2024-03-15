@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where} from '@angular/fire/firestore';
+import {Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, updateDoc} from '@angular/fire/firestore';
 import { Product } from '../models/product.model';
 
 const PATH = 'products'
@@ -44,16 +44,5 @@ export class ProductService {
   deleteProduct(id:string){
     const document = doc(this._firestore, PATH, id);
     return deleteDoc(document);
-  }
-
-  async searchProductByQuery(productName: string){
-    const q = query(this._collection, where('name', '>=', productName), where('name', '<=', productName + '\uf8ff'));
-    const querySnapshot = await getDocs(q);
-    let products: Product[] = [];
-
-    querySnapshot.forEach((doc) =>{
-      products = [...products, {id: doc.id, ...doc.data()} as Product]
-    });
-    return products;
   }
 }

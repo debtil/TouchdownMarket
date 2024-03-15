@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { ProductStateService } from '../../services/product-state.service';
 import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-list-product',
@@ -12,12 +14,17 @@ import { Router } from '@angular/router';
 })
 export class ListProductComponent {
   products: any[];
-  constructor(private productService: ProductService, private productState: ProductStateService, private router: Router){}
+  searchForm: FormGroup;
+
+  constructor(private productService: ProductService, private productState: ProductStateService, private router: Router, private formBuilder: FormBuilder, private ngZone: NgZone){}
 
   ngOnInit() {
 
-      this.listProducts();
+    this.listProducts();
 
+    this.searchForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+    });
   }
 
   listProducts(){
@@ -30,5 +37,24 @@ export class ListProductComponent {
     this.productState.setProduct(product);
     this.router.navigate(['/edit'])
   }
+
+  private filterProducts(searchValue: string): Observable<Product[]> {
+    return this.productService.getProducts().pipe(
+      map((products) => {
+        return products.filter((product) => {
+          const matchesSearch = product.name.toLowerCase().includes(searchValue.toLowerCase());
+          return matchesSearch;
+        });
+      })
+    );
+  }
   
+  submitForm(){
+    const searchValue = this.searchForm.controls['name'].value;
+    this.filterProducts(searchValue).subscribe((filteredProducts) => {
+      this.ngZone.run(() => {
+        this.products = filteredProducts;
+      });
+    });
+  }
 }
