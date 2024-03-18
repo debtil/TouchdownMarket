@@ -16,6 +16,7 @@ export class AddProductComponent {
   addForm: FormGroup;
   isSubmitted: boolean = false;
   imagem: any;
+  event: any;
 
   constructor( private router: Router,  private productService: ProductService, private formBuilder: FormBuilder, /*private auth: AuthService*/) {}
 
@@ -31,15 +32,14 @@ export class AddProductComponent {
     this.data = new Date().toISOString();
   }
 
+  uploadFile(imagem: any){
+    this.imagem = imagem.files;
+  }
+
   private addProduct(){
     const product: Product = this.addForm.value;
-    const promises: Promise<any>[] = [];
-    this.productService.createProduct(product).then(() => {
-      alert('Criado com sucesso')
-    }).catch((error) => {
-      alert('erro')
-      console.log(error)
-    })
+    this.productService.createWithImg(this.imagem, product)
+    console.log(product);
   }
 
   submitForm(): boolean{

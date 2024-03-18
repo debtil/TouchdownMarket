@@ -33,12 +33,12 @@ export class EditProductComponent {
       description: [this.product.description, [Validators.required]],
       price: [this.product.price, [Validators.required, Validators.min(1)]],
       quantity: [this.product.quantity, [Validators.required, Validators.min(1)]],
-      images: [this.product.images]
+      images: [""]
     })
   }
 
-  updateFile(imagem: any){
-    this.imagem = imagem;
+  updateFile(file: any){
+    this.imagem = file
   }
 
   submitForm(): boolean{
@@ -53,11 +53,15 @@ export class EditProductComponent {
   }
 
   edit(){
-    this.productService.updateProduct(this.product.id, this.editForm.value).then(() =>{
-      alert('produto atualizado com sucesso!');
-      console.log(this.editForm.value);
-      this.router.navigate(['/list']);
-    })
+    if(this.editForm.value.images != ""){
+      this.productService.updateWithImg(this.imagem, this.editForm.value, this.product.id);
+      alert("Edição realizada com sucesso")
+      this.router.navigate(["/list"]);
+    }else{
+      this.productService.updateWithoutImg(this.editForm.value, this.product.id)
+      alert("Edição realizada com sucesso")
+      this.router.navigate(["/list"]);
+    }
   }
 
   delete(){

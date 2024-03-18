@@ -21,13 +21,15 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ListProductComponent } from './admin/list-product/list-product.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
+import { ShowdownComponent } from './views/showdown/showdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddProductComponent,
     ListProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    ShowdownComponent
   ],
   imports: [
     BrowserModule,

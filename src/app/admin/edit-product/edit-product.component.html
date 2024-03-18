@@ -2,6 +2,10 @@
   .formulario{
     padding-left: 252px;
   }
+  img{
+    max-width: 200px;
+    max-height: 200px
+  }
 </style>
 
 <div class="formulario">
@@ -17,8 +21,9 @@
       <label>Quantidade</label>
       <input type="text" formControlName="quantity"><br>
       <label>Imagem</label>
-      <input type="file" multiple><br>
+      <input type="file" formControlName="images" (change)="updateFile($event.target)"><br>
       <button type="submit">Editar produto</button>
       <button type="button" (click)="delete()">Excluir</button>
     </form>
+    <img [src]="product.images" [alt]="product.name">
   </div>
