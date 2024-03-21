@@ -22,6 +22,7 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ListProductComponent } from './admin/list-product/list-product.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import { ShowdownComponent } from './views/showdown/showdown.component';
+import { AddStoreComponent } from './adminMaster/add-store/add-store.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ShowdownComponent } from './views/showdown/showdown.component';
     AddProductComponent,
     ListProductComponent,
     EditProductComponent,
-    ShowdownComponent
+    ShowdownComponent,
+    AddStoreComponent
   ],
   imports: [
     BrowserModule,
