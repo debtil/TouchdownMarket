@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "touchdownmarket-750ec"
-  }
+    "default": "touchdownmarket-750ec",
+    "touchdownmarket": "touchdownmarket-750ec"
+  },
+  "targets": {},
+  "etags": {}
 }

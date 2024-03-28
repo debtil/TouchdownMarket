@@ -23,6 +23,12 @@ import { ListProductComponent } from './admin/list-product/list-product.componen
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import { ShowdownComponent } from './views/showdown/showdown.component';
 import { AddStoreComponent } from './adminMaster/add-store/add-store.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { LoginComponent } from './views/login/login.component';
+
+import * as firebase from '@angular/fire/app';
+
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -31,7 +37,9 @@ import { AddStoreComponent } from './adminMaster/add-store/add-store.component';
     ListProductComponent,
     EditProductComponent,
     ShowdownComponent,
-    AddStoreComponent
+    AddStoreComponent,
+    ProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
