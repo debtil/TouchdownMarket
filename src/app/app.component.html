@@ -55,9 +55,8 @@
             <img src="../favicon.ico" alt="Logo TouchdownMarket">
         </div>
         <a >TouchdownMarket</a>
-        <a *ngIf="hidden" (click)="goToCreate()">Adicionar</a>
-        <a *ngIf="hidden" (click)="goToList()">Visualizar</a>
-        <a *ngIf="!hidden" (click)="goToList()">Login</a>
+        <a (click)="goToCreate()">Adicionar</a>
+        <a (click)="goToList()">Visualizar</a>
     </div>
     <button (click)="toggleSidebar()">Toggle Sidebar</button>
     <router-outlet></router-outlet>
