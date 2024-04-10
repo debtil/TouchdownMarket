@@ -41,19 +41,15 @@ export class LoginComponent {
       password: this.loginForm.controls['password'].value,
     };
 
-    this.auth
-      .login(acc.email, acc.password)
-      .then((loggedIn) => {
+    this.auth.login(acc.email, acc.password).then((loggedIn) => {
         if (loggedIn) {
           alert('Login realizado com sucesso!');
           this.ngZone.run(() => this.router.navigate(['/list']));
-        } else {
-          this.loginForm.reset();
-          alert('Credenciais incorretas ou usuário não cadastrado!');
         }
       })
-      .catch((error) => {
-        console.error(error); // Trate erros de autenticação aqui
+      .catch(() => {
+          this.loginForm.reset();
+          alert('Credenciais incorretas ou usuário não cadastrado!');
       });
   }
 
