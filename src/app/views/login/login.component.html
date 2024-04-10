@@ -1,1 +1,16 @@
-<p>login works!</p>
+<style>
+    .formulario{
+      padding-left: 252px;
+    }
+  </style>
+  
+  <div class="formulario">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <label>email</label>
+        <input type="email" formControlName="email"><br>
+        <label>senha</label>
+        <input type="password" formControlName="password"><br>
+        <button type="submit" [disabled]="!loginForm.valid" (click)="login()">Entrar</button>
+      </form>
+
+    </div>

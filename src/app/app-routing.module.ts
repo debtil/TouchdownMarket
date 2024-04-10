@@ -5,6 +5,7 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ListProductComponent } from './admin/list-product/list-product.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import {AddStoreComponent} from './adminMaster/add-store/add-store.component'
+import { LoginComponent } from './views/login/login.component';
 const routes: Routes = [
   {
     path: '',
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'admin/create-store',
     component: AddStoreComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
 

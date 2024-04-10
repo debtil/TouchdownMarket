@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
   host: {ngSkipHydration: 'true'},
 })
 export class AppComponent {
-  title = 'TouchdownMarket2.0';
+  title = 'TouchdownMarket';
+  
 
   private _router = inject(Router)
   
@@ -20,7 +22,11 @@ export class AppComponent {
     this._router.navigate(['/list']);
   }
 
+  goToLogin(){
+    this._router.navigate(['/login']);
+  }
+
   toggleSidebar() {
     document.querySelector('.sidebar').classList.toggle('open');
-}
+  }
 }
