@@ -1,1 +1,7 @@
-<p style="padding-left: 252px;">product-page works!</p>
+<div style="padding-left: 252px;">
+    <img style="max-width: 200px; max-height: 200px; margin-bottom: 10px;" [src]="product.images"/>
+    <h1>{{product.name}}</h1>
+    <p>{{product.price | currency: "BRL"}}</p>
+    <p>{{product.quantity}}</p>
+    <p>{{product.description}}</p>
+</div>
