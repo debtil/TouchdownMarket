@@ -24,6 +24,7 @@ import { EditProductComponent } from './admin/edit-product/edit-product.componen
 import { ShowdownComponent } from './views/showdown/showdown.component';
 import { AddStoreComponent } from './adminMaster/add-store/add-store.component';
 import { LoginComponent } from './views/login/login.component';
+import { ProductPageComponent } from './views/product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoginComponent } from './views/login/login.component';
     EditProductComponent,
     ShowdownComponent,
     AddStoreComponent,
-    LoginComponent
+    LoginComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,

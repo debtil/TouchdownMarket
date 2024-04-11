@@ -6,6 +6,8 @@ import { ListProductComponent } from './admin/list-product/list-product.componen
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import {AddStoreComponent} from './adminMaster/add-store/add-store.component'
 import { LoginComponent } from './views/login/login.component';
+import { ShowdownComponent } from './views/showdown/showdown.component';
+import {ProductPageComponent} from './views/product-page/product-page.component';
 const routes: Routes = [
   {
     path: '',
@@ -30,6 +32,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'showdown',
+    component: ShowdownComponent,
+  },
+  {
+    path: 'product',
+    component: ProductPageComponent,
   },
 ];
 
