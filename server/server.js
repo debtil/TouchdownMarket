@@ -20,6 +20,51 @@ app.post("/checkout", async (req, res, next) => {
     }
 
     const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card', 'boleto'],
+      shipping_address_collection: {
+        allowed_countries: ['BR', 'US']
+      },
+        shipping_options: [{
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount:{
+              amount: 0,
+              currency: 'brl',
+            },
+            display_name: 'Livre de Frete',
+            delivery_estimate:{
+              minimum:{
+                unit: 'business_day',
+                value: 5,
+              },
+              maximum: {
+                unit: 'business_day',
+                value: 7,
+              },
+            }
+          }
+        },
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+                amount: 1500,
+                currency: 'brl',
+            },
+            display_name: 'Enviado no dia seguinte',
+            delivery_estimate: {
+                minimum: {
+                unit: 'business_day',
+                value: 1,
+                },
+                maximum: {
+                unit: 'business_day',
+                value: 1,
+                },
+            }
+          }
+        },
+        ],
       line_items: [
         {
           price_data: {
