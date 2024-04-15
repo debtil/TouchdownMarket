@@ -25,6 +25,7 @@ import { ShowdownComponent } from './views/showdown/showdown.component';
 import { AddStoreComponent } from './adminMaster/add-store/add-store.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProductPageComponent } from './views/product-page/product-page.component';
+import { CartComponent } from './views/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProductPageComponent } from './views/product-page/product-page.componen
     ShowdownComponent,
     AddStoreComponent,
     LoginComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

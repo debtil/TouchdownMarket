@@ -73,8 +73,8 @@ export class ProductService {
     return task;
   }
 
-  updateWithImg(event: Event, product: Product, id: string){
-    /*const file = image.item(0);
+  updateWithImg(images:any, product: Product, id: string){
+    const file = images.item(0);
     if(file.type.split('/')[0] != 'image'){
       alert('tipo não suportado')
       return console.log('erro');
@@ -92,32 +92,7 @@ export class ProductService {
         })
       })
     ).subscribe();
-    return task;*/
-      const target = event.target as HTMLInputElement;
-      const files = target.files as FileList;
-  
-      if (files.length > 0) {
-        const file = files.item(0);
-        if (file.type.split('/')[0] != 'image') {
-          alert('Error: Invalid file type. Please select an image.');
-          return;
-        }
-  
-        const path = `images/${new Date().getTime()}_${file.name}`;
-        const fileRef = this._storage.ref(path);
-        let task = this._storage.upload(path, file);
-  
-        task.snapshotChanges().pipe(
-          finalize(() => {
-            console.log(fileRef);
-            let uploadedFile = fileRef.getDownloadURL();
-            uploadedFile.subscribe(resp =>{
-              product.images.push(resp);
-              this.updateProduct(id, product); // Assuming you have an 'updateProduct' function
-            })
-          })
-        ).subscribe();
-      }
+    return task;
   }
 
   updateWithoutImg(product: Product, id: string){
