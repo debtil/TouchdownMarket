@@ -1,1 +1,9 @@
-<p>cart works!</p>
+<div style="padding-left: 252px;">
+    <h1>Cart</h1>
+    <div *ngFor="let item of cartService.getItems()">
+        <img src="{{item.images}}">
+        <h3>{{item.name}}</h3>
+        <p>{{item.price}}</p>
+        <button (click)="deleteFromCart(item)">Deletar</button>
+    </div>
+</div>

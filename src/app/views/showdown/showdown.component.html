@@ -43,10 +43,11 @@
         </div>
       </ng-container>
       <ng-template #productBlock>
-        <div class="product" (click)="goToProduct(product)">
+        <div class="product">
           <img [src]="product.images" [alt]="product.name">
-          <h2>{{ product.name }}</h2>
+          <h2 (click)="goToProduct(product)" style="cursor: pointer;">{{ product.name }}</h2>
           <p>Price: {{ product.price | currency: "BRL"}}</p>
+          <button (click)="addToCart(product)">Adicionar ao carrinho</button>
         </div>
       </ng-template>
     </ng-container>

@@ -1,10 +1,11 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ProductStateService } from '../../services/product-state.service';
 import { Observable, map } from 'rxjs';
 import { Product } from '../../models/product.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-showdown',
@@ -15,7 +16,13 @@ export class ShowdownComponent {
   products: any[];
   searchForm: FormGroup;
 
-  constructor(private router: Router, private productService: ProductService, private productStateService: ProductStateService, private formBuilder: FormBuilder, private ngZone: NgZone){}
+  constructor(private router: Router, 
+    private productService: ProductService, 
+    private productStateService: ProductStateService, 
+    private formBuilder: FormBuilder, 
+    private ngZone: NgZone){}
+
+    cartService = inject(CartService);
 
   ngOnInit(){
     this.ngZone.run(() =>{
@@ -55,5 +62,9 @@ export class ShowdownComponent {
   goToProduct(product: Product){
     this.productStateService.setProduct(product);
     this.router.navigate(['/product']);
+  }
+
+  addToCart(product: Product){
+    this.cartService.addToCart(product)
   }
 }
