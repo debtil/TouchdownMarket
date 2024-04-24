@@ -27,6 +27,21 @@ import { LoginComponent } from './views/login/login.component';
 import { ProductPageComponent } from './views/product-page/product-page.component';
 import { CartComponent } from './views/cart/cart.component';
 
+import {
+  LucideAngularModule,
+  Plane,
+  PlaneTakeoff,
+  Twitch,
+  Twitter,
+  Facebook,
+  GraduationCap,
+  Menu,
+  ArrowLeft,
+  ArrowRight,
+  Search,
+} from 'lucide-angular';
+import { HomeComponent } from './views/home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,9 +53,22 @@ import { CartComponent } from './views/cart/cart.component';
     LoginComponent,
     ProductPageComponent,
     CartComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
+    LucideAngularModule.pick({
+      Plane,
+      PlaneTakeoff,
+      Twitch,
+      Twitter,
+      Facebook,
+      GraduationCap,
+      Menu,
+      ArrowLeft,
+      ArrowRight,
+      Search,
+    }),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TouchdownMarket2.0": {
+    "TouchdownMarket": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -37,7 +37,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/@flaticon/flaticon-uicons/css/all/all.css"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
