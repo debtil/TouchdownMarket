@@ -1,5 +1,5 @@
 {
-  "name": "touchdown-market2.0",
+  "name": "touchdown-market",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:TouchdownMarket2.0": "node dist/touchdown-market2.0/server/server.mjs"
+    "serve:ssr:TouchdownMarket": "node dist/touchdown-market/server/server.mjs"
   },
   "private": true,
   "dependencies": {

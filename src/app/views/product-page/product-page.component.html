@@ -1,13 +1,56 @@
-<div style="padding-left: 252px;">
-    <img style="max-width: 200px; max-height: 200px; margin-bottom: 10px;" [src]="product.images"/>
-    <h1>{{product.name}}</h1>
-    <p>{{product.price | currency: "BRL"}}</p>
-    <p>{{product.quantity}}</p>
-    <p>{{product.description}}</p>
-    
-    <div style="padding-top: 15px;">
-        <button (click)="onCheckout()">Comprar</button>
+<div class="bg-white">
+    <div class="pt-6">
+      <div class="grid grid-cols-1 justify-items-center">
+        <div
+          class="md:grid md:grid-cols-2 md:content-center items-center max-w-screen-lg"
+        >
+          <div class="mt-4">
+            <img
+              [src]="product.images"
+              alt="Imagem do Curso"
+              class="h-full w-full max-h-lg max-w-lg object-cover p-5 rounded-[2rem] object-center"
+            />
+          </div>
+  
+          <div class="mx-auto px-4 pb-16 pt-10">
+            <h1
+              class="text-3xl sm:text-4xl font-bold text-center tracking-tight text-gray-900"
+            >
+              {{ product.name }}
+            </h1>
+  
+            <div class="mt-4 md:mt-5">
+              <p
+                class="text-2xl sm:text-3xl text-center tracking-tight text-sky-950"
+              >
+               {{ product.price | currency: "BRL"}}
+              </p>
+  
+              <form class="mt-5 flex justify-center">
+                <button
+                  (click)="onCheckout()"
+                  type="submit"
+                  class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center uppercase rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  Comprar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="px-3 py-9 max-w-screen-lg">
+          <h3 class="font-semibold text-xl sm:text-3xl pb-2 text-blue-950">
+            Descrição
+          </h3>
+          <div class="space-y-6">
+            <p class="text-base sm:text-2xl text-sky-950">
+              {{ product.description }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
 

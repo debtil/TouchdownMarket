@@ -75,7 +75,7 @@ app.post("/checkout", async (req, res, next) => {
             },
             unit_amount: item.price * 100,
           },
-          quantity: item.quantity,
+          quantity: 1 //item.quantity,
         },
       ],
       mode: "payment",
