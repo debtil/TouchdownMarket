@@ -1,28 +1,3 @@
-<div style="padding-left: 252px;">
-    <h1>Carrinho</h1>
-    <div *ngFor="let item of cartService.getItems()">
-        <img src="{{item.images}}">
-        <h3>{{item.name}}</h3>
-        <p>{{item.price | currency: "BRL"}}</p>
-        <p>{{item.quantity}}</p>
-        <div style="display: flex; gap: 10px;">
-        <button (click)="deleteFromCart(item)">Deletar</button>
-        <button (click)="cartService.incrementQuantity(item.id)">+</button>
-        <button (click)="cartService.decrementQuantity(item.id)">-</button>
-        </div>
-    </div>
-</div>
-
-<div style=" padding-left: 252px;">
-    <h1>Valor total: {{cartService.getTotal() | currency: "BRL"}}</h1>
-</div>
-
-<div style=" padding-left: 252px;">
-    <button (click)="onCheckout()">Finalizar compra</button>
-</div>
-
-
-
 <div class="bg-white">
     <div class="mx-auto max-w-screen-xl px-4 py-16">
         <div class="w-full grid grid-cols-1 justify-items-center">
@@ -67,6 +42,12 @@
                   <p class="text-base sm:text-2xl text-sky-950">
                     {{cartService.getTotal() | currency: "BRL"}}
                   </p>
+                </div>
+                <div>
+                  <button 
+                    class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center uppercase rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    (click)="onCheckout()">Finalizar compra
+                  </button>
                 </div>
               </div>
             </div>
