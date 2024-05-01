@@ -13,7 +13,7 @@ const stripe = require("stripe")("sk_test_51OG3cBLnrzag1vMq6oCQzlgrxCOrXtGtxo9H5
 
 app.post("/checkout", async (req, res, next) => {
   try {
-    const item = req.body.item;
+    const item = req.body.items;
 
     if (typeof item !== "object") {
       throw new Error("item property in req.body must be an object");
@@ -65,19 +65,17 @@ app.post("/checkout", async (req, res, next) => {
           }
         },
         ],
-      line_items: [
-        {
+        line_items:  req.body.items.map((item) => ({
           price_data: {
-            currency: "brl",
+            currency: 'brl',
             product_data: {
               name: item.name,
-              images: [item.images],
+              images: [item.images]
             },
             unit_amount: item.price * 100,
           },
-          quantity: 1 //item.quantity,
-        },
-      ],
+          quantity: item.quantity,
+        })),
       mode: "payment",
       success_url: "http://localhost:4242/success.html",
       cancel_url: "http://localhost:4242/cancel.html",

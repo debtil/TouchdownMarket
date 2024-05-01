@@ -13,15 +13,24 @@ import { loadStripe } from '@stripe/stripe-js';
 })
 export class CartComponent {
   cart: Cart = {items: []};
-
-  
+  displayedColumns: string[] = [
+    'images',
+    'name',
+    'price',
+    'quantity',
+    'total',
+    'action',
+  ];
   cartSubscription: Subscription | undefined;
-
+  dataSource: CartItem[] = [];
   cartService = inject(CartService);
   http = inject(HttpClient);
 
   ngOnInit(): void{
-  
+    this.cartSubscription = this.cartService.cart.subscribe((_cart: Cart) => {
+      this.cart = _cart;
+      this.dataSource = _cart.items;
+    });
   }
 
   onCheckout(): void{
@@ -35,13 +44,33 @@ export class CartComponent {
     });
   }
 
+  getTotal(items: CartItem[]): number {
+    return this.cartService.getTotal(items);
+  }
+
+  onAddQuantity(item: CartItem): void {
+    this.cartService.addToCart(item);
+  }
+
+  onRemoveFromCart(item: CartItem): void {
+    this.cartService.removeFromCart(item);
+  }
+
+  onRemoveQuantity(item: CartItem): void {
+    this.cartService.removeQuantity(item);
+  }
+
+  onClearCart(): void {
+    this.cartService.clearCart();
+  }
+
   ngOnDestroy(){
     if(this.cartSubscription){
       this.cartSubscription.unsubscribe();
     }
   }
 
-  deleteFromCart(item: any){
+  /*deleteFromCart(item: any){
     this.cartService.deleteFromCart(item);
-  }
+  }*/
 }

@@ -3,9 +3,11 @@ export interface Cart {
 }
 
 export interface CartItem{
-    image: string;
+    images: string;
     name: string;
     price: number;
+    description: string;
+    category: string;
     quantity: number;
     id: string;
 }
