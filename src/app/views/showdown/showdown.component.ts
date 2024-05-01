@@ -1,10 +1,12 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, Inject, NgZone} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ProductStateService } from '../../services/product-state.service';
 import { Observable, map } from 'rxjs';
 import { Product } from '../../models/product.model';
+import { CartService } from '../../services/cart.service';
+import {ProductCategory} from '../../utils/product-category.enum';
 
 @Component({
   selector: 'app-showdown',
@@ -12,10 +14,15 @@ import { Product } from '../../models/product.model';
   styleUrl: './showdown.component.css'
 })
 export class ShowdownComponent {
-  products: any[];
+  products: Product[];
   searchForm: FormGroup;
 
-  constructor(private router: Router, private productService: ProductService, private productStateService: ProductStateService, private formBuilder: FormBuilder, private ngZone: NgZone){}
+  constructor(private router: Router, 
+    private productService: ProductService, 
+    private productStateService: ProductStateService, 
+    private formBuilder: FormBuilder, 
+    private ngZone: NgZone,
+    @Inject(CartService) private cartService: CartService){}
 
   ngOnInit(){
     this.ngZone.run(() =>{
@@ -23,6 +30,7 @@ export class ShowdownComponent {
     });
     this.searchForm = this.formBuilder.group({
       name: ['', [Validators.required]],
+      category: ['', [Validators.required]]
     });
   }
 
@@ -32,20 +40,26 @@ export class ShowdownComponent {
     })
   }
 
-  private filterProducts(searchValue: string): Observable<Product[]>{
+  private filterProducts(searchValue: string, categoryValue: string): Observable<Product[]>{
     return this.productService.getProducts().pipe(
       map((products) =>{
         return products.filter((product) =>{
           const matchesSearch = product.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase());
-          return matchesSearch;
+          const matchesCategory = !categoryValue || product.category === categoryValue;
+          return matchesSearch && matchesCategory;
         });
       })
     );
   }
 
+  productCategory(category: string) {
+    return ProductCategory[category as keyof typeof ProductCategory];
+  }
+
   submitForm(){
     const searchValue = this.searchForm.controls['name'].value;
-    this.filterProducts(searchValue).subscribe((filteredProducts) =>{
+    const categoryValue = this.searchForm.controls['category'].value;
+    this.filterProducts(searchValue, categoryValue).subscribe((filteredProducts) =>{
       this.ngZone.run(() =>{
         this.products = filteredProducts;
       });
@@ -55,5 +69,18 @@ export class ShowdownComponent {
   goToProduct(product: Product){
     this.productStateService.setProduct(product);
     this.router.navigate(['/product']);
+  }
+
+  onAddToCart(product: Product): void {
+    console.log('Adding product to cart:', product);
+    this.cartService.addToCart({
+      images: product.images,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      description: product.description,
+      quantity: 1,
+      id: product.id,
+    })
   }
 }

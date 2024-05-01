@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TouchdownMarket2.0": {
+    "TouchdownMarket": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/touchdown-market2.0",
+            "outputPath": "dist/touchdown-market",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -37,7 +37,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -78,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "TouchdownMarket2.0:build:production"
+              "buildTarget": "TouchdownMarket:build:production"
             },
             "development": {
-              "buildTarget": "TouchdownMarket2.0:build:development"
+              "buildTarget": "TouchdownMarket:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "TouchdownMarket2.0:build"
+            "buildTarget": "TouchdownMarket:build"
           }
         },
         "test": {
