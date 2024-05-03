@@ -2,8 +2,12 @@
 const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
-const { createBrotliDecompress } = require("zlib");
 const { Order } = require("./order");
+const admin = require('firebase-admin');
+
+admin.initializeApp();
+
+const db = admin.firestore();
 
 const app = express();
 app.use(express.static("public"));
@@ -102,7 +106,7 @@ app.post("/checkout", async (req, res, next) => {
 const createOrder = async(customer, data) =>{
   const Items = JSON.parse(customer.metadata.cart);
 
-  const newOrder = Order({
+  const newOrder = {
     userId: customer.metadata.userId,
     customerId: data.customer,
     paymentIntentId: data.payment_intent,
@@ -111,11 +115,12 @@ const createOrder = async(customer, data) =>{
     total: data.amount_total,
     shipping: data.customer_details,
     payment_status: data.payment_status,
-  });
+  };
+
   try{
-    const savedOrder = await newOrder.save();
-    console.log("saved order: ", savedOrder);
-    //email de confirmação pro user poder ser implementado aqui
+    const orderRef = await Order.add(newOrder);
+    console.log("saved order: ", orderRef.id);
+    // email de confirmação pro user poder ser implementado aqui
   }catch(err){
     console.log(err);
   }
