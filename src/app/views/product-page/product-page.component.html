@@ -7,7 +7,7 @@
           <div class="mt-4">
             <img
               [src]="product.images"
-              alt="Imagem do Curso"
+              alt="Imagem do Produto"
               class="h-full w-full max-h-lg max-w-lg object-cover p-5 rounded-[2rem] object-center"
             />
           </div>
@@ -28,11 +28,11 @@
   
               <form class="mt-5 flex justify-center">
                 <button
-                  (click)="onCheckout()"
+                  (click)="onAddToCart(product)"
                   type="submit"
                   class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center uppercase rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
-                  Comprar
+                  Adicionar ao carrinho
                 </button>
               </form>
             </div>
