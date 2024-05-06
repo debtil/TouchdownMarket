@@ -2,12 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
-const { Order } = require("./order");
-const admin = require('firebase-admin');
-
-admin.initializeApp();
-
-const db = admin.firestore();
+//const { storeOrder } = require('./firebaseFunction');
 
 const app = express();
 app.use(express.static("public"));
@@ -22,7 +17,12 @@ app.post("/checkout", async (req, res, next) => {
   const customer = await stripe.customers.create({
     metadata:{
       userId: req.body.userId,
-      cart: JSON.stringify(req.body.items)
+      cart: JSON.stringify(req.body.items.map(item => ({
+        id: item.id,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price
+      })))
     },
   });
   
@@ -102,35 +102,11 @@ app.post("/checkout", async (req, res, next) => {
   }
 });
 
-//Create Order
-const createOrder = async(customer, data) =>{
-  const Items = JSON.parse(customer.metadata.cart);
-
-  const newOrder = {
-    userId: customer.metadata.userId,
-    customerId: data.customer,
-    paymentIntentId: data.payment_intent,
-    products: Items,
-    subtotal: data.amount_subtotal,
-    total: data.amount_total,
-    shipping: data.customer_details,
-    payment_status: data.payment_status,
-  };
-
-  try{
-    const orderRef = await Order.add(newOrder);
-    console.log("saved order: ", orderRef.id);
-    // email de confirmação pro user poder ser implementado aqui
-  }catch(err){
-    console.log(err);
-  }
-}
-
 //webhook
 let endpointSecret; 
 //endpointSecret = "whsec_3fead49f34e4ad6d6e9f470d85a7530e96e70d9d8429c39458c8e8e5f79a35aa";
 
-app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
+app.post('/webhook',  express.raw({type: 'application/json'}), (req, res) => {
   const sig = req.headers['stripe-signature'];
 
   let data;
@@ -160,7 +136,8 @@ app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
     stripe.customers.retrieve(data.customer).then((customer) =>{
       //console.log(customer);
       //console.log("data: ", data);
-      createOrder(customer, data); 
+      //storeOrder(customer, data);
+      console.log("foi pro firebase");
     }).catch(err => console.log(err.message))
   }
 
