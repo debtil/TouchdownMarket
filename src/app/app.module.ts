@@ -41,6 +41,7 @@ import {
   Search,
 } from 'lucide-angular';
 import { HomeComponent } from './views/home/home.component';
+import { OrdersComponent } from './views/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { HomeComponent } from './views/home/home.component';
     ProductPageComponent,
     CartComponent,
     HomeComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
