@@ -12,6 +12,7 @@ import { CartComponent } from './views/cart/cart.component';
 import { HomeComponent } from './views/home/home.component';
 
 import { AuthGuard } from './utils/auth.guard';
+import { OrdersComponent } from './views/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,11 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    canActivate: [AuthGuard]
   },
 ];
 

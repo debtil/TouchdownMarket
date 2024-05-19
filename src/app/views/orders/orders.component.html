@@ -1,1 +1,25 @@
-<p></p>
+<div *ngIf="customerData.length > 0">
+    <h1>Lista de Pedidos</h1>
+    <div *ngFor="let customer of customerData" class="order">
+      <h2>Pedido de: {{ customer.customerName }}</h2>
+      <p><strong>ID do cliente:</strong> {{ customer.customerId }}</p>
+      <p><strong>Email:</strong> {{ customer.email }}</p>
+      <p><strong>Status do pagamento:</strong> {{ customer.status }}</p>
+  
+      <h3>Itens do carrinho:</h3>
+      <ul>
+        <li *ngFor="let item of customer.cart">
+          <div class="cart-item">
+            <strong>{{ item.name }}</strong> <br>
+            Quantidade: {{ item.quantity }} <br>
+            Preço: {{ item.price | currency: "BRL"}}
+          </div>
+        </li>
+      </ul>
+      <p><strong>Total pago:</strong> {{ customer.totalAmount | currency: "BRL"}}</p>
+    </div>
+  </div>
+  <div *ngIf="customerData.length === 0">
+    <p>Nenhum pedido feito.</p>
+  </div>
+  

@@ -1,0 +1,43 @@
+h1 {
+    color: #333;
+    text-align: center;
+  }
+  
+  .order {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .order h2 {
+    color: #555;
+  }
+  
+  .order p {
+    margin: 5px 0;
+  }
+  
+  .cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin: 10px 0;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  

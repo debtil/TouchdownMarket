@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
-  private apiUrl = 'http://localhost:4242/customer-data.json'; // adjust the URL to your server
+  private apiUrl = 'http://localhost:4242/customer-data.json';
 
   constructor(private http: HttpClient) { }
 
-  getCustomerData(): Promise<any> {
-    return this.http.get(this.apiUrl).toPromise();
+  getCustomerData(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
   }
 
 }
