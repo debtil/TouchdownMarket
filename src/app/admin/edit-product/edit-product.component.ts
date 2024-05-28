@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { ProductStateService } from '../../services/product-state.service';
 import { Router } from '@angular/router';
+import { ProductCategory } from '../../utils/product-category.enum';
 
 @Component({
   selector: 'app-edit-product',
@@ -17,12 +18,16 @@ export class EditProductComponent {
   editForm: FormGroup;
   isSubmitted: boolean = false;
   imagem: any;
+  ProductCategory = ProductCategory;
+  categoryKeys: string[];
 
   products: Product[];
 
   constructor(private router: Router, private productService: ProductService, private productState: ProductStateService, private formBuilder: FormBuilder){}
 
   ngOnInit(){
+    this.categoryKeys = Object.keys(ProductCategory);
+
     this.productState.product$.subscribe(product => {
       this.product = product;
     });
@@ -65,7 +70,7 @@ export class EditProductComponent {
   }
 
   delete(){
-    let confirmation = confirm("quer mesmo apagar produto?");
+    let confirmation = confirm("Deseja mesmo apagar este produto?");
     if(confirmation){
       this.deleteProduct();
     }
@@ -73,12 +78,16 @@ export class EditProductComponent {
 
   deleteProduct(){
     this.productService.deleteProduct(this.product.id).then(() => {
-      alert('producto apagado com sucesso')
+      alert('Produto apagado com sucesso')
       this.router.navigate(['/list'])
     }).catch((error) => {
       alert('erro ao apagar')
       console.log(error)
     })
+  }
+
+  getCategoryValue(key: string): string {
+    return this.ProductCategory[key as keyof typeof this.ProductCategory];
   }
 
 }

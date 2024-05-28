@@ -16,6 +16,7 @@ import {ProductCategory} from '../../utils/product-category.enum';
 export class ShowdownComponent {
   products: Product[];
   searchForm: FormGroup;
+  productCat = ProductCategory;
 
   constructor(private router: Router, 
     private productService: ProductService, 
@@ -82,5 +83,9 @@ export class ShowdownComponent {
       quantity: 1,
       id: product.id,
     })
+  }
+
+  getCategoryDisplayName(category: string): string {
+    return this.productCat[category as keyof typeof ProductCategory];
   }
 }

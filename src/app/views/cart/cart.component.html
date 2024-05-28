@@ -67,3 +67,31 @@
     </div>
   </div>
 </div>
+
+
+
+
+<!-- <form [formGroup]="checkoutForm" (ngSubmit)="onCheckout()">
+            <div>
+              <label for="cep" class="block text-sm font-medium text-gray-700">CEP:</label>
+              <input 
+                type="text" 
+                id="cep" 
+                formControlName="cep" 
+                name="cep" 
+                required 
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              >
+              <div *ngIf="checkoutForm.get('cep')?.invalid && (checkoutForm.get('cep')?.dirty || checkoutForm.get('cep')?.touched)" class="text-red-600 text-sm">
+                CEP inválido.
+              </div>
+            </div>
+            <div>
+              <button 
+                type="submit"
+                [disabled]="checkoutForm.invalid"
+                class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center uppercase rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >Finalizar o pagamento
+              </button>
+            </div>
+          </form>-->
