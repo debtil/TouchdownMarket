@@ -1,77 +1,49 @@
 <div class="bg-white">
   <div class="mx-auto max-w-screen-xl px-4 py-16">
     <div class="w-full grid grid-cols-1 justify-items-center">
-      <div *ngIf="cart.items.length" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6 py-10 lg:max-w-screen-lg">
-        <div *ngFor="let element of cart.items" class="border rounded-lg p-4 shadow-md flex flex-col items-center">
-          <img
-            [src]="element.images"
-            alt="Product"
-            class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
-          />
-          <h2 class="mt-2 text-center font-semibold text-xl hover:cursor-pointer">
-            {{ element.name }}
-          </h2>
-          <p class="text-gray-600 text-center">
-            {{ element.quantity }}
-          </p>
-          <p class="mt-2 font-bold text-lg text-center">
-            {{ element.price | currency : "BRL" }}
-          </p>
-          <button 
-          (click)="onRemoveFromCart(element)"
-          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
-          >Remover</button>
-          <div class="flex w-full justify-center my-2">
+      <form [formGroup]="checkoutForm" (ngSubmit)="onCheckout()">
+        <div *ngIf="cart.items.length" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6 py-10 lg:max-w-screen-lg">
+          <div *ngFor="let element of cart.items" class="border rounded-lg p-4 shadow-md flex flex-col items-center">
+            <img
+              [src]="element.images"
+              alt="Product"
+              class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
+            />
+            <h2 class="mt-2 text-center font-semibold text-xl hover:cursor-pointer">
+              {{ element.name }}
+            </h2>
+            <p class="text-gray-600 text-center">
+              {{ element.quantity }}
+            </p>
+            <p class="mt-2 font-bold text-lg text-center">
+              {{ element.price | currency : "BRL" }}
+            </p>
+            <button 
+              (click)="onRemoveFromCart(element)"
+              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
+            >Remover</button>
+            <div class="flex w-full justify-center my-2">
               <button 
-              (click)="onRemoveQuantity(element)"
-              class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mr-2"
+                (click)="onRemoveQuantity(element)"
+                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mr-2"
               > - 
               </button>
               <button
-              (click)="onAddQuantity(element)"
-              class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer ml-2"
+                (click)="onAddQuantity(element)"
+                class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer ml-2"
               > + 
               </button>
+            </div>
           </div>
-        </div>
-        <div class="px-3 py-9 max-w-screen-lg">
-          <h3 class="font-semibold text-xl sm:text-3xl pb-2 text-blue-950">
-            Total
-          </h3>
-          <div class="space-y-6">
-            <p class="text-base sm:text-2xl text-sky-950">
-              {{ getTotal(cart.items) | currency: "BRL"}}
-            </p>
-          </div>
-          <div>
-            <button 
-              class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center uppercase rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              (click)="onCheckout()">Finalizar o pagamento
-            </button>
-            <button 
-              (click)="onClearCart()"
-              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
-              >Limpar carrinho</button>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="!cart.items.length" class="px-3 py-9 max-w-screen-lg">
-        <p>
-          Seu carrinho está vazio!
-          <button 
-            routerLink="/showdown"
-            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
-            >Começar a comprar</button>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-<!-- <form [formGroup]="checkoutForm" (ngSubmit)="onCheckout()">
+          <div class="px-3 py-9 max-w-screen-lg">
+            <h3 class="font-semibold text-xl sm:text-3xl pb-2 text-blue-950">
+              Total
+            </h3>
+            <div class="space-y-6">
+              <p class="text-base sm:text-2xl text-sky-950">
+                {{ getTotal(cart.items) | currency: "BRL"}}
+              </p>
+            </div>
             <div>
               <label for="cep" class="block text-sm font-medium text-gray-700">CEP:</label>
               <input 
@@ -85,8 +57,6 @@
               <div *ngIf="checkoutForm.get('cep')?.invalid && (checkoutForm.get('cep')?.dirty || checkoutForm.get('cep')?.touched)" class="text-red-600 text-sm">
                 CEP inválido.
               </div>
-            </div>
-            <div>
               <button 
                 type="submit"
                 [disabled]="checkoutForm.invalid"
@@ -94,4 +64,22 @@
               >Finalizar o pagamento
               </button>
             </div>
-          </form>-->
+            <button 
+              (click)="onClearCart()"
+              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
+            >Limpar carrinho</button>
+          </div>
+        </div>
+        <div *ngIf="!cart.items.length" class="px-3 py-9 max-w-screen-lg">
+          <p>
+            Seu carrinho está vazio!
+            <button 
+              routerLink="/showdown"
+              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
+            >Começar a comprar</button>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
