@@ -48,7 +48,7 @@
               {{ product.name }}
             </h2>
             <p class="text-gray-600 text-center">
-              {{ product.category }}
+              {{ getCategoryDisplayName(product.category) }}
             </p>
             <p class="mt-2 font-bold text-lg text-center">
               {{ product.price | currency : "BRL" }}

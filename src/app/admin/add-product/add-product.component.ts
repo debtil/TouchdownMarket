@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { ProductCategory } from '../../utils/product-category.enum';
 
 
 @Component({
@@ -12,15 +13,18 @@ import { Product } from '../../models/product.model';
   host: {ngSkipHydration: 'true'},
 })
 export class AddProductComponent {
+  ProductCategory = ProductCategory;
   data: string;
   addForm: FormGroup;
   isSubmitted: boolean = false;
   imagem: any;
-  event: any;
+  categoryKeys: string[];
 
   constructor( private router: Router,  private productService: ProductService, private formBuilder: FormBuilder, /*private auth: AuthService*/) {}
 
   ngOnInit(){
+    this.categoryKeys = Object.keys(ProductCategory);
+
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
       category: ['', [Validators.required]],
@@ -53,5 +57,9 @@ export class AddProductComponent {
       this.addForm.reset();
       return true;
     }
+  }
+
+  getCategoryValue(key: string): string {
+    return this.ProductCategory[key as keyof typeof this.ProductCategory];
   }
 }
