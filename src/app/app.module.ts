@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 import { environment } from '../environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -83,10 +84,13 @@ import { OrdersComponent } from './views/orders/orders.component';
     provideStorage(() => getStorage()),
     provideDatabase(() => getDatabase()),
     provideAuth(() => getAuth()),
+    NgxMaskDirective, 
+    NgxMaskPipe
   ],
   providers: [
     provideClientHydration(),
     HttpClientModule,
+    provideNgxMask(),
   ],
   bootstrap: [AppComponent]
 })
