@@ -1,64 +1,61 @@
-  <div class="bg-white">
-    <div class="mx-auto max-w-screen-xl px-4 py-16">
-      <h2 class="text-3xl font-bold text-center tracking-tight text-blue-950 pb-5">
-        Explore diferentes produtos e avance na sua jornada no mundo do futebol americano.</h2>
-  
-      <form [formGroup]="searchForm" class="px-2 py-5" (ngSubmit)="submitForm()">
-        <select
+<div class="bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 py-16">
+    <h2 class="text-3xl font-bold text-center tracking-tight text-blue-950 pb-5">
+      Explore diferentes produtos e avance na sua jornada no mundo do futebol americano.
+    </h2>
+
+    <form [formGroup]="searchForm" class="px-2 py-5" (ngSubmit)="submitForm()">
+      <select
         formControlName="category"
         id="category"
         class="block w-full p-4 text-[0.7rem] sm:text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value="" class="text-center">Todas as categorias</option>
-          <option value="protection" class="text-center">Equipamentos de proteção</option>
-          <option value="clothes" class="text-center">Roupas</option>
-          <option value="accessories" class="text-center">Acessórios</option>
-          <option value="collectibles" class="text-center">Colecionáveis</option>
-        </select>
-       
-        <div class="relative">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <i-lucide class="w-4 h-4 sm:w-6 sm:h-6 text-blue-800/60" name="Search"></i-lucide>
-          </div>
-          <input
-            type="search"
-            formControlName="name"
-            id="default-search"
-            class="block w-full p-4 ps-10 text-[0.7rem] sm:text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Encontre os produtos dos seus sonhos aqui..."
-            required
-          />
-  
-          <button
-            type="submit"
-            class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm sm:text-base px-4 py-2"
-          >Procurar</button>
+      >
+        <option value="" class="text-center">Todas as categorias</option>
+        <option *ngFor="let key of categoryKeys" [value]="key" class="text-center">{{ getCategoryValue(key) }}</option>
+      </select>
+     
+      <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <i-lucide class="w-4 h-4 sm:w-6 sm:h-6 text-blue-800/60" name="Search"></i-lucide>
         </div>
-      </form>
-  
-      <div class="w-full grid grid-cols-1 justify-items-center">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6 py-10 lg:max-w-screen-lg">
-          <div *ngFor="let product of products" class="border rounded-lg p-4 shadow-md flex flex-col items-center">
-            <img
-              [src]="product.images"
-              alt="Imagem do Produto"
-              class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
-            />
-            <h2 class="mt-2 text-center font-semibold text-xl hover:cursor-pointer" (click)="goToProduct(product)">
-              {{ product.name }}
-            </h2>
-            <p class="text-gray-600 text-center">
-              {{ getCategoryDisplayName(product.category) }}
-            </p>
-            <p class="mt-2 font-bold text-lg text-center">
-              {{ product.price | currency : "BRL" }}
-            </p>
-            <button 
-            
-            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
-            (click)="onAddToCart(product)">Adicionar ao carrinho</button>
-          </div>
+        <input
+          type="search"
+          formControlName="name"
+          id="default-search"
+          class="block w-full p-4 ps-10 text-[0.7rem] sm:text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Encontre os produtos dos seus sonhos aqui..."
+          required
+        />
+
+        <button
+          type="submit"
+          class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm sm:text-base px-4 py-2"
+        >Procurar</button>
+      </div>
+    </form>
+
+    <div class="w-full grid grid-cols-1 justify-items-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6 py-10 lg:max-w-screen-lg">
+        <div *ngFor="let product of products" class="border rounded-lg p-4 shadow-md flex flex-col items-center">
+          <img
+            [src]="product.images"
+            alt="Imagem do Produto"
+            class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
+          />
+          <h2 class="mt-2 text-center font-semibold text-xl hover:cursor-pointer" (click)="goToProduct(product)">
+            {{ product.name }}
+          </h2>
+          <p class="text-gray-600 text-center">
+            {{ getCategoryDisplayName(product.category) }}
+          </p>
+          <p class="mt-2 font-bold text-lg text-center">
+            {{ product.price | currency : "BRL" }}
+          </p>
+          <button 
+          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
+          (click)="onAddToCart(product)">Adicionar ao carrinho</button>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -12,6 +12,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AppComponent {
   title = 'TouchdownMarket';
   isLoggedIn = false;
+  isMobileMenuOpen: boolean = false;
+  currentYear: number = new Date().getFullYear();
 
   constructor(private auth: AuthService, private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe((user) => {
@@ -38,8 +40,8 @@ export class AppComponent {
     this._router.navigate(['/login']);
   }
 
-  toggleSidebar() {
-    document.querySelector('.sidebar').classList.toggle('open');
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
   logout(){

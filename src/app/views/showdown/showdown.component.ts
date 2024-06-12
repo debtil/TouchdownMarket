@@ -6,7 +6,7 @@ import { ProductStateService } from '../../services/product-state.service';
 import { Observable, map } from 'rxjs';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
-import {ProductCategory} from '../../utils/product-category.enum';
+import { ProductCategory } from '../../utils/product-category.enum';
 
 @Component({
   selector: 'app-showdown',
@@ -17,6 +17,8 @@ export class ShowdownComponent {
   products: Product[];
   searchForm: FormGroup;
   productCat = ProductCategory;
+  categoryKeys: string[];
+  ProductCategory = ProductCategory;
 
   constructor(private router: Router, 
     private productService: ProductService, 
@@ -26,6 +28,7 @@ export class ShowdownComponent {
     @Inject(CartService) private cartService: CartService){}
 
   ngOnInit(){
+    this.categoryKeys = Object.keys(ProductCategory);
     this.ngZone.run(() =>{
       this.listProducts();
     });
@@ -86,6 +89,10 @@ export class ShowdownComponent {
   }
 
   getCategoryDisplayName(category: string): string {
-    return this.productCat[category as keyof typeof ProductCategory];
+    return this.getCategoryValue(category);
+  }
+
+  getCategoryValue(key: string): string {
+    return this.ProductCategory[key as keyof typeof this.ProductCategory];
   }
 }

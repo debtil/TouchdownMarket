@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import {SwiperModule} from 'swiper/angular';
 
 import { environment } from '../environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -75,6 +76,7 @@ import { OrdersComponent } from './views/orders/orders.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    SwiperModule,
     ReactiveFormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),

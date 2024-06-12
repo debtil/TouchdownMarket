@@ -1,6 +1,9 @@
 export enum ProductCategory {
-    protection = 'Equipamentos de proteção',
-    clothes = 'Roupas',
+    jersey = 'Jerseys',
+    tshirt = 'Camisetas',
     accessories ='Acessórios',
-    collectibles= 'Colecionáveis'
+    collectibles= 'Colecionáveis',
+    sweatshirts = 'Casacos',
+    hats = 'Bonés',
+    kids = 'Crianças',
   }
