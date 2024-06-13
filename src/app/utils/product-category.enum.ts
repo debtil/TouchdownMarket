@@ -5,5 +5,5 @@ export enum ProductCategory {
     collectibles= 'Colecionáveis',
     sweatshirts = 'Casacos',
     hats = 'Bonés',
-    kids = 'Crianças',
+    kids = 'Infantil',
   }

@@ -18,11 +18,11 @@ export class HomeComponent {
   autoSlideInterval: any;
 
   bannerImgs: string[] = [
-    '../../../assets/banner.jpeg',
-    '../../../assets/banner2.png',
-    '../../../assets/banner3.jpg',
-    '../../../assets/banner4.jpg',
-    '../../../assets/banner5.jpg',
+    'https://i.imgur.com/4q4CGO7.jpg',
+    'https://i.imgur.com/qntVN52.jpg',
+    'https://i.imgur.com/ZHPfQ8E.jpg',
+    'https://i.imgur.com/z13mNBn.png',
+    'https://i.imgur.com/aNNv5Q7.jpg',
   ]
 
   constructor(private ngZone: NgZone,private router: Router, private productStateService: ProductStateService, private productService: ProductService, @Inject(CartService) private cartService: CartService) { }

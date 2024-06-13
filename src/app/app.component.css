@@ -16,36 +16,27 @@ input[type="text"] {
     background-color: #f8f9fa;
 }
 .footer-content {
-    width: 100%;
+    width: 100%; /* Ocupa toda a largura da tela */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f8f9fa; /* Cor de fundo do footer */
+    padding: 10px 20px; /* Espaçamento interno do footer */
+    box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2); /* Sombra para separar do conteúdo */
+    position: fixed; /* Fixa o footer na parte inferior da tela */
+    bottom: 0; /* Alinha o footer na parte inferior */
+    left: 0; /* Alinha o footer à esquerda */
+    z-index: 1000; /* Z-index alto para garantir que fique acima de outros conteúdos */
 }
+
 .footer-content p {
     margin: 0;
     color: #6c757d;
 }
-.footer-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .footer-logo img {
     width: 40px;
     height: 32px;
-}
-.footer-nav {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-.footer-nav li {
-    margin-left: 1rem;
-}
-.footer-nav a {
-    text-decoration: none;
-    color: #6c757d;
-    padding: 0.5rem;
+    display: block; /* Garante que a imagem se ajuste corretamente */
 }
   

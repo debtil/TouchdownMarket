@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { loadStripe } from '@stripe/stripe-js';
 import { CartService } from '../../services/cart.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-page',
@@ -14,14 +15,16 @@ import { CartService } from '../../services/cart.service';
 export class ProductPageComponent {
   product: Product;
 
-  constructor(private productStateService: ProductStateService, private router: Router, private http: HttpClient, private cartService: CartService){}
+  constructor(private productService: ProductService,private productStateService: ProductStateService, private router: Router, private http: HttpClient, private cartService: CartService){}
 
   handler: any = null;
   paymentHandler: any = null;
 
-  ngOnInit(): void{
-    this.productStateService.product$.subscribe((product) =>{
+   ngOnInit(): void{
+    this.productStateService.product$.subscribe(async (product) =>{
       this.product = product;
+      const productDetails = await this.productService.getProduct(product.id);
+      this.product.quantity = productDetails.quantity;
     })
   }
 

@@ -1,7 +1,7 @@
 <header class="bg-white shadow-md shadow-sky-100 rounded sticky top-0 z-50">
   <nav class="bg-white border-b border-gray-200">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
+      <div class="relative flex items-center justify-between h-20">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button -->
           <button 
@@ -23,11 +23,11 @@
             </svg>
           </button>
         </div>
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-          <div class="flex flex-shrink-0 items-center">
+        <div class="flex justify-center items-center flex-1 sm:justify-start sm:items-stretch">
+          <div class="flex-shrink-0 items-center">
             <a href=""><img class="h-10 w-auto" src="../assets/logo.png" alt="Your Company"></a>
           </div>
-          <div class="hidden sm:ml-6 sm:block">
+          <div class="hidden sm:block ml-6">
             <div class="flex space-x-4" *ngIf="isLoggedIn; else guest">
               <a routerLink="create" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white" aria-current="page">Adicionar Produtos</a>
               <a routerLink="/list" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Lista de produtos</a>
@@ -62,19 +62,15 @@
       </div>
     </div>
   </nav>
-  </header>
+</header>
+<router-outlet></router-outlet>
+<!-- Ajuste opcional: certifique-se de que o conteúdo abaixo da barra de navegação não esteja interferindo visualmente -->
 
-<body>
-    <router-outlet></router-outlet>
-
-    <div class="container">
-      <footer class="footer-content">
-          <p>&copy; {{currentYear}} TouchdownMarket, Inc</p>
-          <div class="footer-logo">
-              <img src="../assets/logo.png" style="align-items: center; display: flex;">
-          </div>
-      </footer>
-  </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+  
+  <footer class="footer-content">
+    <p>&copy; {{currentYear}} TouchdownMarket, Inc</p>
+    <div class="footer-logo">
+      <img src="../assets/logo.png" style="align-items: center; display: flex;">
+    </div>
+  </footer>
 

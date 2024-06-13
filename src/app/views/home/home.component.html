@@ -1,7 +1,9 @@
 <div class="w-full h-96 bg-gray-800 relative" *ngIf="bannerImgs.length > 0">
-  <div class="absolute inset-0 carousel-inner">
-    <div class="carousel-item" *ngFor="let imageUrl of bannerImgs; let i = index" [class.active]="i === currentSlide">
-      <img [src]="imageUrl" class="w-full h-96 object-cover" alt="Carousel Image {{i + 1}}">
+  <div class="absolute inset-0">
+    <div class="carousel-inner flex h-full">
+      <div class="carousel-item" *ngFor="let imageUrl of bannerImgs; let i = index" [class.active]="i === currentSlide">
+        <img [src]="imageUrl" class="w-full h-full object-cover" alt="Carousel Image {{i + 1}}">
+      </div>
     </div>
   </div>
   <button class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-white bg-gray-700 bg-opacity-50 hover:bg-opacity-75" (click)="prevSlide()">&#10094;</button>
