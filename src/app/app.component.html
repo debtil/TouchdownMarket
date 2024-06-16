@@ -23,24 +23,24 @@
             </svg>
           </button>
         </div>
-        <div class="flex justify-center items-center flex-1 sm:justify-start sm:items-stretch">
+        <div class="flex justify-center items-center flex-1 sm:justify-center sm:items-center">
           <div class="flex-shrink-0 items-center">
             <a href=""><img class="h-10 w-auto" src="../assets/logo.png" alt="Your Company"></a>
           </div>
           <div class="hidden sm:block ml-6">
-            <div class="flex space-x-4" *ngIf="isLoggedIn; else guest">
-              <a routerLink="create" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white" aria-current="page">Adicionar Produtos</a>
-              <a routerLink="/list" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Lista de produtos</a>
-              <a routerLink="/orders" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Lista de pedidos</a>
-              <a (click)="logout()" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Logout</a>
+            <div class="flex space-x-4 text-center text-lg">
+              <ng-container *ngIf="isLoggedIn; else guest">
+                <a routerLink="create" class="rounded-md bg-blue-500 px-3 py-2 font-medium text-white no-underline" aria-current="page">Adicionar Produtos</a>
+                <a routerLink="/list" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Lista de produtos</a>
+                <a routerLink="/orders" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Lista de pedidos</a>
+                <a (click)="logout()" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Logout</a>
+              </ng-container>
+              <ng-template #guest>
+                <a routerLink="/showdown" class="rounded-md bg-blue-500 px-3 py-2 font-medium text-white no-underline" aria-current="page">Produtos</a>
+                <a routerLink="/cart" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Carrinho</a>
+                <a routerLink="/login" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Portal do Lojista</a>
+              </ng-template>
             </div>
-            <ng-template #guest>
-              <div class="flex space-x-4">
-                <a routerLink="/showdown" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white" aria-current="page">Produtos</a>
-                <a routerLink="/cart" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Carrinho</a>
-                <a routerLink="/login" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Portal do Lojista</a>
-              </div>
-            </ng-template>
           </div>
         </div>
       </div>
@@ -48,16 +48,16 @@
   
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" id="mobile-menu" *ngIf="isMobileMenuOpen">
-      <div class="space-y-1 px-2 pb-3 pt-2">
+      <div class="space-y-1 px-2 pb-3 pt-2 text-center text-lg">
         <!-- Current: "bg-blue-500 text-white", Default: "text-gray-700 hover:bg-gray-100 hover:text-gray-900" -->
-        <a routerLink="create" class="block rounded-md bg-blue-500 px-3 py-2 text-base font-medium text-white" aria-current="page" *ngIf="isLoggedIn; else guestMobile">Adicionar Produtos</a>
-        <a routerLink="/list" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900" *ngIf="isLoggedIn">Lista de produtos</a>
-        <a routerLink="/orders" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900" *ngIf="isLoggedIn">Lista de pedidos</a>
-        <a (click)="logout()" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900" *ngIf="isLoggedIn">Logout</a>
+        <a routerLink="create" class="block rounded-md bg-blue-500 px-3 py-2 font-medium text-white no-underline" aria-current="page" *ngIf="isLoggedIn; else guestMobile">Adicionar Produtos</a>
+        <a routerLink="/list" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline" *ngIf="isLoggedIn">Lista de produtos</a>
+        <a routerLink="/orders" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline" *ngIf="isLoggedIn">Lista de pedidos</a>
+        <a (click)="logout()" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline" *ngIf="isLoggedIn">Logout</a>
         <ng-template #guestMobile>
-          <a routerLink="/showdown" class="block rounded-md bg-blue-500 px-3 py-2 text-base font-medium text-white" aria-current="page">Produtos</a>
-          <a routerLink="/cart" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Carrinho</a>
-          <a routerLink="/login" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900">Portal do Lojista</a>
+          <a routerLink="/showdown" class="block rounded-md bg-blue-500 px-3 py-2 font-medium text-white no-underline" aria-current="page">Produtos</a>
+          <a routerLink="/cart" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Carrinho</a>
+          <a routerLink="/login" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Portal do Lojista</a>
         </ng-template>
       </div>
     </div>
@@ -66,11 +66,21 @@
 <router-outlet></router-outlet>
 <!-- Ajuste opcional: certifique-se de que o conteúdo abaixo da barra de navegação não esteja interferindo visualmente -->
 
-  
-  <footer class="footer-content">
-    <p>&copy; {{currentYear}} TouchdownMarket, Inc</p>
-    <div class="footer-logo">
-      <img src="../assets/logo.png" style="align-items: center; display: flex;">
-    </div>
-  </footer>
+<footer class="footer-content">
+  <p>&copy; {{currentYear}} TouchdownMarket, Inc</p>
+  <div class="footer-logo">
+    <img src="../assets/logo.png" style="align-items: center; display: flex;">
+  </div>
+</footer>
 
+<style>
+  .no-underline {
+    text-decoration: none;
+  }
+  .text-lg {
+    font-size: 1.125rem; /* 18px */
+  }
+  .text-center {
+    text-align: center;
+  }
+</style>

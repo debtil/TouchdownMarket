@@ -1,0 +1,26 @@
+.input{
+    display: none;
+}
+
+#label{
+    display: inline-block;
+    color: #fff;
+    background: blue;
+    text-align: center;
+    padding: 12px 22px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
+}
+
+#label i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+#label:active{
+    transform: scale(0.9);
+}

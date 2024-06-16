@@ -5,7 +5,6 @@ import {ProductCategory} from '../../utils/product-category.enum'
 import { CartService } from '../../services/cart.service';
 import { ProductStateService } from '../../services/product-state.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +14,7 @@ export class HomeComponent {
   products: Product[] = [];
   currentSlide: number = 0;
   productCat = ProductCategory;
-  autoSlideInterval: any;
+  limitedProducts: Product[] = [];
 
   bannerImgs: string[] = [
     'https://i.imgur.com/4q4CGO7.jpg',
@@ -31,21 +30,13 @@ export class HomeComponent {
     this.ngZone.run(() =>{
       this.listProducts();
     });
-    this.startAutoSlide();
   }
 
   listProducts(): void {
     this.productService.getProducts().subscribe((res: Product[]) => {
       this.products = res;
+      this.limitedProducts = this.products.slice(0, 10);
     });
-  }
-
-  prevSlide(): void {
-    this.currentSlide = (this.currentSlide === 0) ? this.bannerImgs.length - 1 : this.currentSlide - 1;
-  }
-
-  nextSlide(): void {
-    this.currentSlide = (this.currentSlide === this.bannerImgs.length - 1) ? 0 : this.currentSlide + 1;
   }
 
   getCategoryDisplayName(category: string): string {
@@ -57,15 +48,15 @@ export class HomeComponent {
     this.router.navigate(['/product']);
   }
 
-  private startAutoSlide(): void {
-    this.autoSlideInterval = setInterval(() => {
-      this.nextSlide();
-    }, 5000); // Muda o slide a cada 3 segundos
-  }
-
-  ngOnDestroy(): void {
-    if (this.autoSlideInterval) {
-      clearInterval(this.autoSlideInterval);
-    }
+  onAddToCart(product: Product): void{
+    this.cartService.addToCart({
+      images: product.images,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      description: product.description,
+      quantity: 1,
+      id: product.id,
+    });
   }
 }

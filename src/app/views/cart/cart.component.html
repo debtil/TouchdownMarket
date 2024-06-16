@@ -47,16 +47,17 @@
               </p>
             </div>
             <div>
-              <label for="cep" class="block text-sm font-medium text-gray-700">CEP:</label>
-              <input 
-                type="text" 
-                id="cep" 
-                formControlName="cep" 
-                name="cep" 
-                required 
-                mask="00000-000"
+              <p-floatLabel>
+                <input
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              >
+                  pInputText 
+                  type="text"
+                  formControlName="cep"
+                  required 
+                  mask="00000-000"
+                  id="cep"/>
+                <label for="cep">CEP</label>
+              </p-floatLabel>
               <div *ngIf="checkoutForm.get('cep')?.invalid && (checkoutForm.get('cep')?.dirty || checkoutForm.get('cep')?.touched)" class="text-red-600 text-sm">
                 CEP inválido.
               </div>
