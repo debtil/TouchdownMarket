@@ -44,7 +44,7 @@ export class LoginComponent {
     this.auth.login(acc.email, acc.password).then((loggedIn) => {
         if (loggedIn) {
           alert('Login realizado com sucesso!');
-          this.ngZone.run(() => this.router.navigate(['/list']));
+          this.ngZone.run(() => this.router.navigate(['/']));
         }
       })
       .catch(() => {

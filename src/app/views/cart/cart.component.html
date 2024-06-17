@@ -1,42 +1,50 @@
-<div class="bg-white">
+<div class="" style="background-color: #f5f5f5;">
   <div class="mx-auto max-w-screen-xl px-4 py-16">
     <div class="w-full grid grid-cols-1 justify-items-center">
       <form [formGroup]="checkoutForm" (ngSubmit)="onCheckout()">
-        <div *ngIf="cart.items.length" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6 py-10 lg:max-w-screen-lg">
-          <div *ngFor="let element of cart.items" class="border rounded-lg p-4 shadow-md flex flex-col items-center">
-            <img
-              [src]="element.images"
-              alt="Product"
-              class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
-            />
-            <h2 class="mt-2 text-center font-semibold text-xl hover:cursor-pointer">
-              {{ element.name }}
-            </h2>
-            <p class="text-gray-600 text-center">
-              {{ element.quantity }}
-            </p>
-            <p class="mt-2 font-bold text-lg text-center">
-              {{ element.price | currency : "BRL" }}
-            </p>
-            <button 
-              (click)="onRemoveFromCart(element)"
-              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
-            >Remover</button>
-            <div class="flex w-full justify-center my-2">
-              <button 
-              type="button"
-                (click)="onRemoveQuantity(element)"
-                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mr-2"
-              > - 
-              </button>
-              <button
-              type="button"
-                (click)="onAddQuantity(element)"
-                class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer ml-2"
-              > + 
-              </button>
+        <div *ngIf="cart.items.length" class="grid grid-cols-1 lg:grid-cols-4 gap-4 px-6 py-2 lg:max-w-screen-lg">
+          <div class="lg:col-span-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div *ngFor="let element of cart.items" class="border rounded-lg p-2 shadow-md flex flex-col items-center">
+                <img
+                  [src]="element.images"
+                  alt="Product"
+                  class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
+                />
+                <h2 class="mt-2 text-center font-semibold text-xl">
+                  {{ element.name }}
+                </h2>
+                <p class="mt-1 font-bold text-lg text-center">
+                  {{ element.price | currency : "BRL" }}
+                </p>
+                <button 
+                  (click)="onRemoveFromCart(element)"
+                  class="block text-white bg-custom-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-50 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-1"
+                >Remover</button>
+
+                <div class="flex flex-col items-center w-full my-2">
+                  <div class="flex w-full justify-center">
+                    <button 
+                    type="button"
+                      (click)="onRemoveQuantity(element)"
+                      class="bg-transparent focus:ring-4 focus:outline-none font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mr-2"
+                    ><i class="ri-subtract-line"></i> 
+                    </button>
+
+                    <p class="text-center my-auto">{{ element.quantity }}</p>
+                    
+                    <button
+                      type="button"
+                      (click)="onAddQuantity(element)"
+                      class="bg-transparent focus:ring-4 focus:outline-none font-medium rounded-lg text-base w-1/3 sm:w-auto px-3 py-2 text-center hover:cursor-pointer ml-2"
+                    ><i class="ri-add-line"></i> 
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="px-3 py-9 max-w-screen-lg">
             <h3 class="font-semibold text-xl sm:text-3xl pb-2 text-blue-950">
               Total
@@ -49,7 +57,7 @@
             <div>
               <p-floatLabel>
                 <input
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   pInputText 
                   type="text"
                   formControlName="cep"
@@ -61,27 +69,36 @@
               <div *ngIf="checkoutForm.get('cep')?.invalid && (checkoutForm.get('cep')?.dirty || checkoutForm.get('cep')?.touched)" class="text-red-600 text-sm">
                 CEP inválido.
               </div>
+              
               <button 
                 type="submit"
                 [disabled]="checkoutForm.invalid"
-                class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center uppercase rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >Finalizar o pagamento
+                class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center rounded-md bg-custom-blue px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 hover:cursor-pointer"
+              >Finalizar pagamento
               </button>
             </div>
             <button 
               (click)="onClearCart()"
-              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
+              class="block text-white bg-custom-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:max-w-md px-3 py-2 text-center hover:cursor-pointer mt-2"
             >Limpar carrinho</button>
           </div>
         </div>
-        <div *ngIf="!cart.items.length" class="px-3 py-9 max-w-screen-lg">
-          <p>
-            Seu carrinho está vazio!
-            <button 
-              routerLink="/showdown"
-              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-2/6 sm:w-auto px-3 py-2 text-center hover:cursor-pointer mt-2"
-            >Começar a comprar</button>
-          </p>
+
+        <!--Se o carrinho está vazio-->
+        <div *ngIf="!cart.items.length" class="empty-cart-container">
+          <div class="empty-cart-content">
+            <div class="empty-cart-text">
+              <h1>Seu carrinho está vazio</h1>
+              <p>Não me deixe assim, há centenas de produtos na loja! :(</p>
+              <button 
+                routerLink="/showdown"
+                class="shop-button"
+              >Começar a comprar</button>
+            </div>
+            <div class="empty-cart-image">
+              <img src="../../../assets/CARRINHO.png" alt="Empty Cart">
+            </div>
+          </div>
         </div>
       </form>
     </div>

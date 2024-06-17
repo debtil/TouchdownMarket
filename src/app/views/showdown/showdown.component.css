@@ -1,0 +1,23 @@
+button.block {
+    width: 100%; /* Largura total para que o botão fique centralizado */
+    max-width: 50px; /* Altere conforme necessário para o tamanho desejado */
+    padding: 2px; /* Ajuste o padding conforme necessário */
+    background-color: #002856; /* Cor de fundo personalizada */
+    color: white; /* Cor do texto */
+    height: 100%;
+    max-height: 50px;
+  }
+  
+  button.block:hover {
+    background-color: #002856; /* Cor de fundo ao passar o mouse */
+  }
+  
+  button.block:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.5); /* Adiciona uma sombra de foco */
+  }
+
+  .bg-custom-blue {
+    background-color: #002856 !important;
+  }
+  

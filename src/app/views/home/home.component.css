@@ -1,33 +1,31 @@
-.p-carousel-dot-item {
-  width: 12px;
-  height: 12px;
-  background-color: #d9d9d9;
-  border-radius: 50%;  
-  margin: 0 5px;
-  transition: background-color 0.3s ease;
+@media (min-width: 640px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 1.5); /* Ajuste para telas maiores */
+  }
+}
+@media (min-width: 768px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 2); /* Ajuste para telas maiores */
+  }
+}
+@media (min-width: 1024px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 3); /* Ajuste para telas maiores */
+  }
+}
+@media (min-width: 1280px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 4); /* Ajuste para telas maiores */
+  }
 }
 
-.p-carousel-dot-item.p-highlight {
-  background-color: #007ad9;
-}
- 
-/* custom-carousel.css /
+.button {
+  background-color: #002856 !important;
+  color: #fff;
+  height: 45px;
+  width: 45px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 0;
+  }
 
-.p-carousel-dots-container {
-  display: flex; / Alinha os pontos em uma linha /
-  justify-content: center; / Centraliza os pontos horizontalmente /
-  align-items: center; / Alinha os pontos verticalmente /
-  margin-top: 1rem; / Espaçamento superior /
-}
-
-.p-carousel-dot-item {
-  width: 12px;
-  height: 12px;
-  background-color: #d9d9d9; / Cor de fundo dos pontos /
-  border-radius: 50%; / Faz com que os pontos sejam circulares /
-  margin: 0 5px; / Espaçamento entre os pontos /
-  transition: background-color 0.3s ease; / Transição suave para a cor de fundo /
-}
-
-.p-carousel-dot-item.p-highlight {
-  background-color: #007ad9;} / Cor de fundo dos pontos ativos */

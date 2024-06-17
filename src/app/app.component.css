@@ -1,26 +1,9 @@
-input[type="text"] {
-    height: 100%;
-  }
-  
-  button[type="submit"] {
-    height: 100%;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    border-top: 1px solid #dee2e6;
-    background-color: #f8f9fa;
-}
 .footer-content {
     width: 100%; /* Ocupa toda a largura da tela */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f8f9fa; /* Cor de fundo do footer */
+    background-color: #f5f5f5; /* Cor de fundo do footer */
     padding: 10px 20px; /* Espaçamento interno do footer */
     box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2); /* Sombra para separar do conteúdo */
     position: fixed; /* Fixa o footer na parte inferior da tela */
@@ -35,8 +18,22 @@ input[type="text"] {
 }
 
 .footer-logo img {
-    width: 40px;
-    height: 32px;
+    width: 45px;
+    height: 100%;
     display: block; /* Garante que a imagem se ajuste corretamente */
 }
   
+
+.no-underline {
+  text-decoration: none;
+}
+.text-lg {
+  font-size: 1.125rem; /* 18px */
+}
+.text-center {
+  text-align: center;
+}
+
+.bg-custom-blue {
+  background-color: #002856 !important;
+}
