@@ -1,25 +1,104 @@
-<style>
-  .formulario{
-    padding-left: 252px;
-  }
-</style>
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-1 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crie um produto novo!</h2>
+  </div>
 
-<div class="formulario">
-    <form [formGroup]="addForm" (ngSubmit)="submitForm()">
-      <label>Nome</label>
-      <input type="text" formControlName="name"><br>
-      <label>Categoria</label>
-      <select formControlName="category">
-        <option *ngFor="let key of categoryKeys" [value]="key">{{ getCategoryValue(key) }}</option>
-      </select>
-      <label>Descrição</label>
-      <input type="text" formControlName="description"><br>
-      <label>Preço</label>
-      <input type="text" formControlName="price"><br>
-      <label>Quantidade</label>
-      <input type="text" formControlName="quantity"><br>
-      <label>Imagem</label>
-      <input type="file" formControlName="images" (change)="uploadFile($event.target)"><br>
-      <button type="submit">criar produto</button>
+  <div class="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form 
+    class="space-y-4" 
+    [formGroup]="addForm"
+    (ngSubmit)="submitForm()"
+    novalidate
+    >
+      <div class="mb-6">
+        <p-floatLabel>
+          <input
+            class="block w-full rounded-md border border-gray-300 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            pInputText 
+            type="text"
+            formControlName="name"
+            required 
+            id="name"/>
+          <label for="name">Nome</label>
+        </p-floatLabel>
+      </div>
+      <div class="mb-8">
+        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Categoria</label>
+        <div class="mt-1">
+          <select
+            class="block w-full rounded-md border border-gray-300 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 mb-8" 
+            formControlName="category"
+            >
+            <option *ngFor="let key of categoryKeys" [value]="key">{{ getCategoryValue(key) }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <p-floatLabel>
+          <input
+            class="block w-full rounded-md border border-gray-300 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            pInputText 
+            type="text"
+            formControlName="description"
+            required 
+            id="description"/>
+          <label for="description">Descrição</label>
+        </p-floatLabel>
+      </div>
+
+      <div>
+        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Preço</label>
+        <div class="mt-1">
+          <p-inputNumber 
+            class="block w-full rounded-md border border-gray-300 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            formControlName="price"
+            required
+            inputId="currency-brl" 
+            mode="currency" 
+            currency="BRL" 
+            locale="pt-BR" />
+        </div>
+      </div>
+
+      
+
+      <div>
+        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Quantidade</label>
+        <div class="mt-1">
+          <p-inputNumber 
+            inputId="integeronly" 
+            formControlName="quantity" 
+            required
+            class="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="mt-1">
+          <input 
+            type="file" 
+            formControlName="images" 
+            id="images" 
+            class="input"
+            (change)="uploadFile($event.target)"
+          />
+          <label for="images" id="label" class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer bg-blue-500 text-white rounded-md px-3 py-2 text-center">
+            <i class="ri-file-upload-line"></i> Selecionar Imagem
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <button 
+        type="submit"
+         class=" border-0 flex w-full justify-center rounded-md bg-custom-blue px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer mb-5"
+         >Criar
+        </button>
+      </div>
     </form>
   </div>
+</div>
+
+

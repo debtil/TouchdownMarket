@@ -19,11 +19,14 @@ export class AddProductComponent {
   isSubmitted: boolean = false;
   imagem: any;
   categoryKeys: string[];
+  categoryOptions: { label: string, value: string }[] = [];
+  selectedCategory: string;
 
   constructor( private router: Router,  private productService: ProductService, private formBuilder: FormBuilder, /*private auth: AuthService*/) {}
 
   ngOnInit(){
     this.categoryKeys = Object.keys(ProductCategory);
+    this.categoryOptions = this.categoryKeys.map(key => ({ label: this.getCategoryValue(key), value: key }));
 
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -54,6 +57,7 @@ export class AddProductComponent {
       return false;
     } else {
       this.addProduct();
+      alert('Produto cadastrado com sucesso!');
       this.addForm.reset();
       return true;
     }

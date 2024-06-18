@@ -1,0 +1,11 @@
+img{
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  img:hover {
+    transform: scale(1.1); /* Ajuste o valor de escala conforme desejado para o efeito de zoom */
+  }
+
+  .bg-custom-blue {
+    background-color: #002856 !important;
+  }

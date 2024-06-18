@@ -1,0 +1,36 @@
+@media (min-width: 640px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 1.5); /* Ajuste para telas maiores */
+  }
+}
+@media (min-width: 768px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 2); /* Ajuste para telas maiores */
+  }
+}
+@media (min-width: 1024px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 3); /* Ajuste para telas maiores */
+  }
+}
+@media (min-width: 1280px) {
+  .p-carousel .p-carousel-item {
+    width: calc(100% / 4); /* Ajuste para telas maiores */
+  }
+}
+
+.button {
+  background-color: #002856 !important;
+  color: #fff;
+  height: 45px;
+  width: 45px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 0;
+  }
+
+  .fixed-size-image {
+    width: 300px; /* Defina a largura desejada */
+    height: 300px; /* Defina a altura desejada */
+    object-fit: cover; /* Mantém a proporção da imagem, cortando se necessário */
+}
