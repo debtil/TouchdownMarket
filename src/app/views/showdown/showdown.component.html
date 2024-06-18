@@ -27,7 +27,6 @@
         </button>
       </div>
     </form>
-    
 
     <div class="w-full grid grid-cols-1 justify-items-center">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6 py-10 lg:max-w-screen-lg">
@@ -36,8 +35,11 @@
             [src]="product.images"
             alt="Imagem do Produto"
             class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
+            style="min-height: 256px; max-height: 256px;"
           />
-          <h2 class="mt-1 text-center font-semibold text-xl hover:cursor-pointer" (click)="goToProduct(product)">
+          <h2 class="mt-1 text-center font-semibold text-xl hover:cursor-pointer"
+              (click)="goToProduct(product)"
+              style="min-height: 3em; display: flex; align-items: center; justify-content: center;">
             {{ product.name }}
           </h2>
           <p class="text-gray-600 text-center">
@@ -47,9 +49,9 @@
             {{ product.price | currency : "BRL" }}
           </p>
           <button 
-            class="block text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-base w-full sm:w-auto px-3 py-3 text-center hover:cursor-pointer mt-1"
+            class="block text-white bg-custom-blue focus:ring-4 focus:outline-none font-medium rounded-lg text-base w-full sm:w-auto px-3 py-3 text-center hover:cursor-pointer mt-1"
             (click)="onAddToCart(product)"
-          >
+            style="min-height: 3em;">
             <i class="ri-shopping-cart-line"></i>
           </button>
         </div>
