@@ -32,15 +32,15 @@
         <!-- Desktop menu -->
         <div class="hidden sm:flex items-center justify-center space-x-4 text-lg">
           <ng-container *ngIf="isLoggedIn; else guest">
-            <a routerLink="create" class="rounded-md bg-custom-blue px-3 py-2 font-medium text-white no-underline" aria-current="page">Adicionar Produtos</a>
-            <a routerLink="/list" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Lista de produtos</a>
-            <a routerLink="/orders" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Lista de pedidos</a>
-            <a (click)="logout()" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline hover:cursor-pointer">Logout</a>
+            <a routerLink="create" class="rounded-md bg-custom-blue px-3 py-2 font-medium text-white no-underline" aria-current="page"><i class="ri-add-circle-line"></i>Adicionar Produtos</a>
+            <a routerLink="/list" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline"><i class="ri-file-list-line"></i>Lista de produtos</a>
+            <a routerLink="/orders" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline"><i class="ri-list-ordered"></i>Lista de pedidos</a>
+            <a (click)="logout()" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline hover:cursor-pointer"><i class="ri-logout-box-r-line"></i>Logout</a>
           </ng-container>
           <ng-template #guest>
             <a routerLink="/showdown" class="rounded-md bg-custom-blue px-3 py-2 font-medium text-white no-underline" aria-current="page">Produtos</a>
             <a routerLink="/cart" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Carrinho</a>
-            <a routerLink="/login" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline">Portal do Lojista</a>
+            <a routerLink="/login" class="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline"><i class="ri-login-box-line"></i>Portal do Lojista</a>
           </ng-template>
         </div>
       </div>
@@ -50,7 +50,7 @@
     <div class="sm:hidden" id="mobile-menu" *ngIf="isMobileMenuOpen">
       <div class="space-y-1 px-2 pb-3 pt-2 text-center text-lg">
         <!-- Current: "bg-blue-500 text-white", Default: "text-gray-700 hover:bg-gray-100 hover:text-gray-900" -->
-        <a routerLink="create" class="block rounded-md bg-blue-500 px-3 py-2 font-medium text-white no-underline" aria-current="page" *ngIf="isLoggedIn; else guestMobile">Adicionar Produtos</a>
+        <a routerLink="create" class="block rounded-md bg-custom-blue px-3 py-2 font-medium text-white no-underline" aria-current="page" *ngIf="isLoggedIn; else guestMobile">Adicionar Produtos</a>
         <a routerLink="/list" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline" *ngIf="isLoggedIn">Lista de produtos</a>
         <a routerLink="/orders" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline" *ngIf="isLoggedIn">Lista de pedidos</a>
         <a (click)="logout()" class="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 no-underline" *ngIf="isLoggedIn">Logout</a>
@@ -67,9 +67,11 @@
 <!-- Main content -->
 <router-outlet></router-outlet>
 
-<footer class="footer-content">
-  <p>&copy; {{currentYear}} TouchdownMarket, Inc</p>
-  <div class="footer-logo">
-    <img src="../assets/logo.png" class="h-8 w-auto" alt="Your Company">
-  </div>
-</footer>
+<div class="">
+  <footer class="footer-content">
+    <p>&copy; {{currentYear}} TouchdownMarket, Inc</p>
+    <div class="footer-logo">
+      <img src="../assets/logo.png" class="h-8 w-auto" alt="Your Company">
+    </div>
+  </footer>
+</div>

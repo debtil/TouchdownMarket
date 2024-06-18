@@ -29,3 +29,8 @@
   border: 0;
   }
 
+  .fixed-size-image {
+    width: 300px; /* Defina a largura desejada */
+    height: 300px; /* Defina a altura desejada */
+    object-fit: cover; /* Mantém a proporção da imagem, cortando se necessário */
+}

@@ -41,4 +41,39 @@ h1 {
   strong {
     font-weight: bold;
   }
+
+  .empty-cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background-color: #f5f5f5;
+    margin-bottom: 71px;
+  }
   
+  .empty-cart-content {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .empty-cart-text {
+    max-width: 300px;
+    margin-right: 20px;
+  }
+  
+  .empty-cart-text h1 {
+    font-size: 34px;
+    color: #002856;
+    margin-bottom: 10px;
+  }
+  
+  .empty-cart-text p {
+    font-size: 26px;
+    color: #606060;
+    margin-bottom: 20px;
+  }
+  
+  .empty-cart-image img {
+    width: 300px; /* Adjust size as needed */
+  }

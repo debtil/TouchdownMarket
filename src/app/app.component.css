@@ -1,15 +1,26 @@
+/* Remova a propriedade position: fixed */
 .footer-content {
-    width: 100%; /* Ocupa toda a largura da tela */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5; /* Cor de fundo do footer */
-    padding: 10px 20px; /* Espaçamento interno do footer */
-    box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2); /* Sombra para separar do conteúdo */
-    position: fixed; /* Fixa o footer na parte inferior da tela */
-    bottom: 0; /* Alinha o footer na parte inferior */
-    left: 0; /* Alinha o footer à esquerda */
-    z-index: 1000; /* Z-index alto para garantir que fique acima de outros conteúdos */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 10px 20px;
+  box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Adicione um container para o footer */
+.footer-container {
+  position: relative;
+  padding-bottom: 50px; /* Adicione um padding para que o footer seja visível */
+}
+
+/* Adicione o footer dentro do container */
+.footer-container .footer-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .footer-content p {
@@ -37,3 +48,8 @@
 .bg-custom-blue {
   background-color: #002856 !important;
 }
+
+.text-decoration-none {
+  text-decoration: none;
+}
+

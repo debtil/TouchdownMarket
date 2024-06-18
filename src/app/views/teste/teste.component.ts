@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-teste',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './teste.component.css'
 })
 export class TesteComponent {
-  value: string | undefined;
+  readonly panelOpenState = signal(false);
 }

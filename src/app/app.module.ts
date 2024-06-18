@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 import { environment } from '../environments/environment';
@@ -56,6 +59,7 @@ import { FileUploadModule } from 'primeng/fileupload';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
@@ -64,9 +68,11 @@ import { FileUploadModule } from 'primeng/fileupload';
     InputTextModule,
     FloatLabelModule,
     DropdownModule,
+    MatExpansionModule,
     FileUploadModule,
     InputNumberModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
