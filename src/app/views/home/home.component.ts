@@ -57,6 +57,7 @@ export class HomeComponent {
       description: product.description,
       quantity: 1,
       id: product.id,
+      sizes: product.sizes
     });
   }
 }

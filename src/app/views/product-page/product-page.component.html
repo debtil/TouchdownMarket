@@ -37,6 +37,13 @@
               </div>
             </div>
 
+            <div class="mt-5">
+              <label for="size" class="block text-sm font-medium leading-6 text-gray-900">Selecione o tamanho</label>
+              <select id="size" class="block w-full rounded-md border border-gray-300 py-1 text-gray-900 shadow-sm" [(ngModel)]="selectedSize">
+                <option *ngFor="let size of product.sizes" [value]="size">{{ size }}</option>
+              </select>
+            </div>
+
             <form class="mt-5 flex justify-center">
               <button
                 (click)="onAddToCart(product)"

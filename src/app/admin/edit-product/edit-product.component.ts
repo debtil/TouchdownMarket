@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { ProductStateService } from '../../services/product-state.service';
 import { Router } from '@angular/router';
@@ -30,16 +30,43 @@ export class EditProductComponent {
 
     this.productState.product$.subscribe(product => {
       this.product = product;
+      this.initializeForm();
     });
 
+    /*const sizes = this.product.sizes || [];
     this.editForm = this.formBuilder.group({
       name: [this.product.name, [Validators.required]],
       category: [this.product.category, [Validators.required]],
       description: [this.product.description, [Validators.required]],
       price: [this.product.price, [Validators.required, Validators.min(1)]],
       quantity: [this.product.quantity, [Validators.required, Validators.min(1)]],
+      sizes: this.formBuilder.array(this.product.sizes ? this.product.sizes.map(size => this.formBuilder.control(size, Validators.required)) : []),
       images: [""]
-    })
+    })*/
+  }
+
+  initializeForm() {
+    this.editForm = this.formBuilder.group({
+      name: [this.product.name, [Validators.required]],
+      category: [this.product.category, [Validators.required]],
+      description: [this.product.description, [Validators.required]],
+      price: [this.product.price, [Validators.required, Validators.min(1)]],
+      quantity: [this.product.quantity, [Validators.required, Validators.min(1)]],
+      sizes: this.formBuilder.array(this.product.sizes ? this.product.sizes.map(size => this.formBuilder.control(size, Validators.required)) : []),
+      images: ['']
+    });
+  }
+
+  get sizes(){
+    return this.editForm.get('sizes') as FormArray;
+  }
+
+  addSize(size: string = ''){
+    this.sizes.push(this.formBuilder.control(size, Validators.required));
+  }
+
+  removeSize(i: number){
+    this.sizes.removeAt(i);
   }
 
   updateFile(file: any){

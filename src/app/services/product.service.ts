@@ -101,7 +101,8 @@ export class ProductService {
       category: product.category,
       description: product.description,
       price: product.price,
-      quantity: product.quantity
+      quantity: product.quantity,
+      sizes: product.sizes
     })
   }
 }

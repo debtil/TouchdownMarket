@@ -42,8 +42,17 @@ export class CartComponent implements OnInit{
 
     const cep = this.checkoutForm.value.cep;
 
+    const allItemsInfo = this.cart.items.map((item) => ({
+      id: item.id,
+      name: item.name,
+      quantity: item.quantity,
+      size: item.sizes, // Add the selected size to the item
+      price: item.price,
+      images: item.images,
+    }));
+
     this.http.post('http://localhost:4242/checkout', {
-      items: this.cart.items,
+      items: allItemsInfo,
       cepDestino: cep
     }).subscribe(async (res: any) => {
       let stripe = await loadStripe('pk_test_51OG3cBLnrzag1vMqsb0IX306T43vJgy2Cy7FpG76qZgWLGo8slQXaYCYCkYnYlcLQiWxQ5g36CBivEZ0XzLsKKmz00uhkzxg41');

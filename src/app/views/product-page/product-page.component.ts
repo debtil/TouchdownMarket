@@ -3,7 +3,6 @@ import { ProductStateService } from '../../services/product-state.service';
 import { Product } from '../../models/product.model';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { loadStripe } from '@stripe/stripe-js';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 
@@ -14,11 +13,9 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductPageComponent {
   product: Product;
+  selectedSize: string;
 
   constructor(private productService: ProductService,private productStateService: ProductStateService, private router: Router, private http: HttpClient, private cartService: CartService){}
-
-  handler: any = null;
-  paymentHandler: any = null;
 
    ngOnInit(): void{
     this.productStateService.product$.subscribe(async (product) =>{
@@ -38,6 +35,7 @@ export class ProductPageComponent {
       description: product.description,
       quantity: 1,
       id: product.id,
+      sizes: [this.selectedSize],
     })
   }
 }

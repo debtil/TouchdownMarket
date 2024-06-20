@@ -10,4 +10,5 @@ export interface CartItem{
     category: string;
     quantity: number;
     id: string;
+    sizes: string[];
 }
