@@ -42,6 +42,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FileUploadModule } from 'primeng/fileupload';
+import { PaymentStatusPipe } from './utils/payment-status.pipe';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     HomeComponent,
     OrdersComponent,
     TesteComponent,
+    PaymentStatusPipe,
   ],
   imports: [
     BrowserModule,

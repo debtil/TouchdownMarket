@@ -1,79 +1,102 @@
-h1 {
-    color: #333;
-    text-align: center;
-    margin-top: 5px;
-  }
-  
-  .order {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 15px 0;
-    background-color: #f9f9f9;
-  }
-  
-  .order h2 {
-    color: #555;
-  }
-  
-  .order p {
-    margin: 5px 0;
-  }
-  
-  .cart-item {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .cart-item:last-child {
-    border-bottom: none;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  ul li {
-    margin: 10px 0;
-  }
-  
-  strong {
-    font-weight: bold;
-  }
+.custom-expansion-panel-header {
+  border-bottom: 3px solid #ccc;
+  padding: 16px;
+}
 
-  .empty-cart-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 50vh;
-    background-color: #f5f5f5;
-    margin-bottom: 71px;
-  }
-  
-  .empty-cart-content {
-    display: flex;
-    align-items: center;
-    text-align: left;
-  }
-  
-  .empty-cart-text {
-    max-width: 300px;
-    margin-right: 20px;
-  }
-  
-  .empty-cart-text h1 {
-    font-size: 34px;
-    color: #002856;
-    margin-bottom: 10px;
-  }
-  
-  .empty-cart-text p {
-    font-size: 26px;
-    color: #606060;
-    margin-bottom: 20px;
-  }
-  
-  .empty-cart-image img {
-    width: 300px; /* Adjust size as needed */
-  }
+.custom-expansion-panel-header .mat-panel-title {
+  font-weight: bold;
+  text-align: center; /* Centraliza o texto do header */
+  width: 100%;
+}
+
+.order-container {
+  margin-bottom: 16px;
+}
+
+.order-details {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center; /* Centraliza o texto dentro dos cards */
+}
+
+.order-header {
+  display: flex;
+  justify-content: center; /* Centraliza o texto do header */
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.order-info {
+  margin-bottom: 16px;
+  text-align: center; /* Centraliza o texto dentro dos cards */
+}
+
+.cart-items {
+  list-style-type: none;
+  padding: 0;
+  text-align: center; /* Centraliza o texto dos itens do carrinho */
+}
+
+.cart-item {
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px;
+}
+
+.empty-cart-content {
+  max-width: 600px;
+}
+
+.empty-cart-text h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.empty-cart-text p {
+  font-size: 16px;
+  color: #666;
+}
+
+.empty-cart-image img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 16px;
+}
+
+.main-container {
+  background-color: #f5f5f5;
+  padding-top: 20px; /* Reduz o padding-top para aproximar o título principal ao topo */
+  display: flex;
+  justify-content: center;
+  flex-direction: column; /* Adicionado para centralizar o conteúdo verticalmente */
+  align-items: center;
+}
+
+.accordion-container {
+  max-width: 800px; /* Define uma largura máxima para o container do acordeão */
+  width: 100%;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px; /* Espaço abaixo do título principal */
+}
+
+h1 {
+  text-align: center; /* Centraliza o título principal */
+}

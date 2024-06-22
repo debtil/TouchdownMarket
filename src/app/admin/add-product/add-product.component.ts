@@ -66,7 +66,6 @@ export class AddProductComponent {
       return false;
     } else {
       this.addProduct();
-      alert('Produto cadastrado com sucesso!');
       this.addForm.reset();
       return true;
     }

@@ -1,6 +1,6 @@
 button.block {
     width: 100%; /* Largura total para que o botão fique centralizado */
-    max-width: 50px; /* Altere conforme necessário para o tamanho desejado */
+    max-width: 90px; /* Altere conforme necessário para o tamanho desejado */
     padding: 2px; /* Ajuste o padding conforme necessário */
     background-color: #002856; /* Cor de fundo personalizada */
     color: white; /* Cor do texto */
@@ -17,7 +17,25 @@ button.block {
     box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.5); /* Adiciona uma sombra de foco */
   }
 
+  .button i{
+    font-size: 4rem
+  }
+
   .bg-custom-blue {
     background-color: #002856 !important;
   }
   
+  .custom-input-container {
+    width: 70%; /* Ajuste a largura conforme necessário */
+    margin-left: -1px; /* Para garantir que o botão fique colado com o input */
+  }
+  
+  .custom-input-container input {
+    height: 45px; /* Altura consistente com o dropdown */
+  }
+  
+  .search-button {
+    width: 45px; /* Largura igual à altura para ser quadrado */
+    height: 45px; /* Altura definida */
+    margin-left: -1px; /* Para garantir que o botão fique colado com o input */
+  }

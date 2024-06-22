@@ -25,9 +25,16 @@
         </div>
         <!-- Logo section -->
         <div class="flex items-center justify-center sm:justify-start flex-1">
-          <a href="" class="flex-shrink-0">
-            <img class="h-24 w-auto" src="../assets/logo.png" alt="Your Company">
-          </a>
+          <ng-container *ngIf="!isLoggedIn; else loggedInLogo">
+            <a href="" class="flex-shrink-0">
+              <img class="h-24 w-auto" src="../assets/logo.png" alt="Your Company">
+            </a>
+          </ng-container>
+          <ng-template #loggedInLogo>
+            <a class="flex-shrink-0">
+              <img class="h-24 w-auto" src="../assets/logo.png" alt="Your Company">
+            </a>
+          </ng-template>
         </div>
         <!-- Desktop menu -->
         <div class="hidden sm:flex items-center justify-center space-x-4 text-md">

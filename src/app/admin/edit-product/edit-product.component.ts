@@ -32,17 +32,6 @@ export class EditProductComponent {
       this.product = product;
       this.initializeForm();
     });
-
-    /*const sizes = this.product.sizes || [];
-    this.editForm = this.formBuilder.group({
-      name: [this.product.name, [Validators.required]],
-      category: [this.product.category, [Validators.required]],
-      description: [this.product.description, [Validators.required]],
-      price: [this.product.price, [Validators.required, Validators.min(1)]],
-      quantity: [this.product.quantity, [Validators.required, Validators.min(1)]],
-      sizes: this.formBuilder.array(this.product.sizes ? this.product.sizes.map(size => this.formBuilder.control(size, Validators.required)) : []),
-      images: [""]
-    })*/
   }
 
   initializeForm() {
@@ -87,11 +76,9 @@ export class EditProductComponent {
   edit(){
     if(this.editForm.value.images != ""){
       this.productService.updateWithImg(this.imagem, this.editForm.value, this.product.id);
-      alert("Edição realizada com sucesso")
       this.router.navigate(["/list"]);
     }else{
       this.productService.updateWithoutImg(this.editForm.value, this.product.id)
-      alert("Edição realizada com sucesso")
       this.router.navigate(["/list"]);
     }
   }
@@ -105,7 +92,6 @@ export class EditProductComponent {
 
   deleteProduct(){
     this.productService.deleteProduct(this.product.id).then(() => {
-      alert('Produto apagado com sucesso')
       this.router.navigate(['/list'])
     }).catch((error) => {
       alert('erro ao apagar')
@@ -116,5 +102,4 @@ export class EditProductComponent {
   getCategoryValue(key: string): string {
     return this.ProductCategory[key as keyof typeof this.ProductCategory];
   }
-
 }

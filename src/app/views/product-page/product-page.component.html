@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div class="" style="background-color: #f5f5f5;">
   <div class="pt-6">
     <div class="grid grid-cols-1 justify-items-center">
       <div class="md:grid md:grid-cols-2 md:content-center items-center max-w-screen-lg">
@@ -26,31 +26,34 @@
 
             <div class="px-3 py-4 max-w-screen-lg">
               <h3
-                class="font-semibold text-xl sm:text-3xl pb-2 text-blue-950"
+                class="font-semibold text-xl sm:text-3xl pb-2 text-black"
               >
                 Descrição
               </h3>
               <div class="space-y-6">
-                <p class="text-base sm:text-2xl text-sky-950">
+                <p class="text-base sm:text-2xl text-black">
                   {{ product.description }}
                 </p>
               </div>
             </div>
 
-            <div class="mt-5">
-              <label for="size" class="block text-sm font-medium leading-6 text-gray-900">Selecione o tamanho</label>
-              <select id="size" class="block w-full rounded-md border border-gray-300 py-1 text-gray-900 shadow-sm" [(ngModel)]="selectedSize">
-                <option *ngFor="let size of product.sizes" [value]="size">{{ size }}</option>
-              </select>
+            <div class="mt-5 card flex justify-content-center">
+              <p-dropdown 
+                [options]="sizeOptions" 
+                [(ngModel)]="selectedSize" 
+                placeholder="Selecione o tamanho">
+              </p-dropdown>
             </div>
 
             <form class="mt-5 flex justify-center">
               <button
                 (click)="onAddToCart(product)"
+                [disabled]="!selectedSize"
+                [ngClass]="{'cursor-pointer': selectedSize}"
                 type="submit"
-                class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center rounded-md border border-transparent bg-custom-blue px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer"
+                class="text-lg sm:text-2xl mt-5 w-full sm:max-w-md items-center text-center rounded-md border border-transparent bg-custom-blue px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
-                Adicionar ao carrinho
+              <i class="ri-shopping-cart-line"></i> Adicionar ao carrinho
               </button>
             </form>
           </div>
