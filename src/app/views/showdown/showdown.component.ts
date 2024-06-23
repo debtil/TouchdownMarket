@@ -7,6 +7,7 @@ import { Observable, map } from 'rxjs';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { ProductCategory } from '../../utils/product-category.enum';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-showdown',
@@ -19,6 +20,7 @@ export class ShowdownComponent {
   productCat = ProductCategory;
   categoryKeys: string[];
   ProductCategory = ProductCategory;
+  categoryOptions: SelectItem[];
 
   constructor(private router: Router, 
     private productService: ProductService, 
@@ -29,6 +31,7 @@ export class ShowdownComponent {
 
   ngOnInit(){
     this.categoryKeys = Object.keys(ProductCategory);
+    this.categoryOptions = [{ label: 'Todas as categorias', value: '' }, ...this.categoryKeys.map(key => ({ label: this.getCategoryValue(key), value: key }))];
     this.ngZone.run(() =>{
       this.listProducts();
     });
@@ -85,6 +88,7 @@ export class ShowdownComponent {
       description: product.description,
       quantity: 1,
       id: product.id,
+      sizes: product.sizes
     })
   }
 

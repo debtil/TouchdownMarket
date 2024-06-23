@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OrdersService } from '../../services/orders.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-orders',
@@ -16,7 +15,7 @@ export class OrdersComponent {
     this.apiService.getCustomerData().subscribe(data =>{
       this.customerData = data.customerData;
     }, error =>{
-      console.log('erro ao dar fetch na api')
+      console.log('erro ao dar fetch na api: ', error)
     })
   }  
 }

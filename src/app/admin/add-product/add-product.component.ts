@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { ProductCategory } from '../../utils/product-category.enum';
@@ -19,14 +18,11 @@ export class AddProductComponent {
   isSubmitted: boolean = false;
   imagem: any;
   categoryKeys: string[];
-  categoryOptions: { label: string, value: string }[] = [];
-  selectedCategory: string;
 
-  constructor( private router: Router,  private productService: ProductService, private formBuilder: FormBuilder, /*private auth: AuthService*/) {}
+  constructor(private productService: ProductService, private formBuilder: FormBuilder) {}
 
   ngOnInit(){
     this.categoryKeys = Object.keys(ProductCategory);
-    this.categoryOptions = this.categoryKeys.map(key => ({ label: this.getCategoryValue(key), value: key }));
 
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -35,8 +31,21 @@ export class AddProductComponent {
       price: ['', Validators.required],
       quantity: ['', [Validators.required, Validators.min(0)]], 
       images: ['', Validators.required],
+      sizes: this.formBuilder.array([])
     });
     this.data = new Date().toISOString();
+  }
+
+  get sizes(){
+    return this.addForm.get('sizes') as FormArray;
+  }
+
+  addSize(size: string = ''){
+    this.sizes.push(this.formBuilder.control(size, Validators.required));
+  }
+
+  removeSize(i: number){
+    this.sizes.removeAt(i);
   }
 
   uploadFile(imagem: any){
@@ -57,7 +66,6 @@ export class AddProductComponent {
       return false;
     } else {
       this.addProduct();
-      alert('Produto cadastrado com sucesso!');
       this.addForm.reset();
       return true;
     }

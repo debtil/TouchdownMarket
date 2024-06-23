@@ -6,4 +6,5 @@ export class Product {
     price: number;
     quantity: number;
     images: string;
+    sizes: string[];
 }

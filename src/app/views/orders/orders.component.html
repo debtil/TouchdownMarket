@@ -1,54 +1,53 @@
-<style>
-  .custom-expansion-panel-header {
-    border-bottom: 3px solid #ccc; /* Aumenta a grossura da borda inferior do cabeçalho */
-    padding: 16px; /* Aumenta o padding do cabeçalho para maior espessura */
-  }
-
-  .custom-expansion-panel-header .mat-panel-title {
-    font-weight: bold; /* Deixa o ID em negrito */
-  }
-</style>
-
-<mat-accordion>
-  <div *ngIf="customerData.length > 0">
+<div class="main-container">
+  <div class="title-container">
     <h1>Lista de Pedidos</h1>
-    <div *ngFor="let customer of customerData" class="order">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header class="custom-expansion-panel-header">
-          <mat-panel-title>
-            Pedido ID: <strong>{{ customer.customerId }}</strong>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div>
-          <h2>Pedido de: {{ customer.customerName }}</h2>
-          <p><strong>ID do cliente:</strong> {{ customer.customerId }}</p>
-          <p><strong>Email:</strong> {{ customer.email }}</p>
-          <p><strong>Status do pagamento:</strong> {{ customer.status }}</p>
-  
-          <h3>Itens do carrinho:</h3>
-          <ul>
-            <li *ngFor="let item of customer.cart">
-              <div class="cart-item">
-                <strong>{{ item.name }}</strong> <br>
-                Quantidade: {{ item.quantity }} <br>
-                Preço: {{ item.price | currency: "BRL" }}
+  </div>
+  <div class="accordion-container">
+    <mat-accordion>
+      <div *ngIf="customerData.length > 0">
+        <div *ngFor="let customer of customerData" class="order-container">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="custom-expansion-panel-header">
+              <mat-panel-title>
+                Pedido ID: <strong>{{ customer.customerId }}</strong>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="order-details">
+              <div class="order-header">
+                <h2>Pedido de: {{ customer.customerName }}</h2>
               </div>
-            </li>
-          </ul>
-          <p><strong>Total pago:</strong> {{ customer.totalAmount | currency: "BRL" }}</p>
+              <div class="order-info">
+                <p><strong>ID do cliente:</strong> {{ customer.customerId }}</p>
+                <p><strong>Email:</strong> {{ customer.email }}</p>
+                <p><strong>Status do pagamento:</strong> {{ customer.status | paymentStatus }}</p>
+              </div>
+              <h3>Itens do carrinho:</h3>
+              <ul class="cart-items">
+                <li *ngFor="let item of customer.cart" class="cart-item">
+                  <div>
+                    <strong>{{ item.name }}</strong> <br>
+                    Quantidade: {{ item.quantity }} <br>
+                    Tamanho: {{ item.size }} <br>
+                    Preço: {{ item.price | currency: 'BRL' }}
+                  </div>
+                </li>
+              </ul>
+              <p><strong>Total pago:</strong> {{ customer.totalAmount | currency: 'BRL' }}</p>
+            </div>
+          </mat-expansion-panel>
         </div>
-      </mat-expansion-panel>
-    </div>
-  </div>
-  <div *ngIf="customerData.length === 0" class="empty-cart-container">
-    <div class="empty-cart-content">
-      <div class="empty-cart-text">
-        <h1>Nenhuma compra foi realizada ainda</h1>
-        <p>Espere até haja algum pedido feito no site</p>
       </div>
-      <div class="empty-cart-image">
-        <img src="../../../assets/CARRINHO.png" alt="Empty Cart">
+      <div *ngIf="customerData.length === 0" class="empty-cart-container">
+        <div class="empty-cart-content">
+          <div class="empty-cart-text">
+            <h1>Nenhuma compra foi realizada ainda</h1>
+            <p>Espere até haja algum pedido feito no site</p>
+          </div>
+          <div class="empty-cart-image">
+            <img src="../../../assets/CARRINHO.png" alt="Empty Cart">
+          </div>
+        </div>
       </div>
-    </div>
+    </mat-accordion>
   </div>
-</mat-accordion>
+</div>

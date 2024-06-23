@@ -1,6 +1,5 @@
 <div class="" style="background-color: #f5f5f5;">
   <div class="mx-auto max-w-screen-xl px-4 py-12">
-
     <form [formGroup]="searchForm" class="flex flex-col sm:flex-row items-center gap-4 justify-center sm:justify-start px-2 py-2 mx-auto max-w-md" (ngSubmit)="submitForm()">
       <div class="w-full flex flex-col sm:flex-row items-center">
         <select
@@ -37,8 +36,7 @@
             class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
             style="min-height: 256px; max-height: 256px;"
           />
-          <h2 class="mt-1 text-center font-semibold text-xl hover:cursor-pointer"
-              (click)="goToProduct(product)"
+          <h2 class="mt-1 text-center font-semibold text-xl"
               style="min-height: 3em; display: flex; align-items: center; justify-content: center;">
             {{ product.name }}
           </h2>
@@ -50,9 +48,9 @@
           </p>
           <button 
             class="block text-white bg-custom-blue focus:ring-4 focus:outline-none font-medium rounded-lg text-base w-full sm:w-auto px-3 py-3 text-center hover:cursor-pointer mt-1"
-            (click)="onAddToCart(product)"
+            (click)="goToProduct(product)"
             style="min-height: 3em;">
-            <i class="ri-shopping-cart-line"></i>
+            <i class="ri-information-line"></i>Detalhes
           </button>
         </div>
       </div>
