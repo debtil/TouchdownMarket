@@ -51,7 +51,7 @@ export class CartComponent implements OnInit{
       images: item.images,
     }));
 
-    this.http.post('http://localhost:4242/checkout', {
+    this.http.post('https://touchdownmarket-server.onrender.com/checkout', {
       items: allItemsInfo,
       cepDestino: cep
     }).subscribe(async (res: any) => {

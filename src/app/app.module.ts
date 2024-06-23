@@ -22,7 +22,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 
-
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ListProductComponent } from './admin/list-product/list-product.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
@@ -30,10 +29,8 @@ import { ShowdownComponent } from './views/showdown/showdown.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProductPageComponent } from './views/product-page/product-page.component';
 import { CartComponent } from './views/cart/cart.component';
-
 import { HomeComponent } from './views/home/home.component';
 import { OrdersComponent } from './views/orders/orders.component';
-import { TesteComponent } from './views/teste/teste.component';
 
 import {ButtonModule} from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
@@ -56,7 +53,6 @@ import { PaymentStatusPipe } from './utils/payment-status.pipe';
     CartComponent,
     HomeComponent,
     OrdersComponent,
-    TesteComponent,
     PaymentStatusPipe,
   ],
   imports: [

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class OrdersService {
 
-  private apiUrl = 'http://localhost:4242/customer-data';
+  private apiUrl = 'https://touchdownmarket-server.onrender.com/customer-data';
 
   constructor(private http: HttpClient) { }
 

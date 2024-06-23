@@ -5,13 +5,13 @@
         <div *ngIf="cart.items.length" class="grid grid-cols-1 lg:grid-cols-4 gap-4 px-6 py-2 lg:max-w-screen-lg">
           <div class="lg:col-span-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <div *ngFor="let element of cart.items" class="border rounded-lg p-2 shadow-md flex flex-col items-center">
+              <div *ngFor="let element of cart.items" class="card border rounded-lg p-2 shadow-md flex flex-col items-center">
                 <img
                   [src]="element.images"
                   alt="Product"
                   class="w-full h-64 object-cover rounded shadow-md shadow-blue-200/60"
                 />
-                <h2 class="mt-2 text-center font-semibold text-xl">
+                <h2 class="card-title mt-2 text-center font-semibold text-xl">
                   {{ element.name }}
                 </h2>
                 <p class="mt-1 font-bold text-lg text-center">
