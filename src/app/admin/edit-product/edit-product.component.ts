@@ -74,13 +74,8 @@ export class EditProductComponent {
   }
 
   edit(){
-    if(this.editForm.value.images != ""){
-      this.productService.updateWithImg(this.imagem, this.editForm.value, this.product.id);
-      this.router.navigate(["/list"]);
-    }else{
       this.productService.updateWithoutImg(this.editForm.value, this.product.id)
       this.router.navigate(["/list"]);
-    }
   }
 
   delete(){

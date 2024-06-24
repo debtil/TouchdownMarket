@@ -73,7 +73,7 @@ export class ProductService {
     return task;
   }
 
-  updateWithImg(images:any, product: Product, id: string){
+  /*updateWithImg(images:any, product: Product, id: string){
     const file = images.item(0);
     if(file.type.split('/')[0] != 'image'){
       alert('tipo não suportado')
@@ -93,7 +93,7 @@ export class ProductService {
       })
     ).subscribe();
     return task;
-  }
+  }*/
 
   updateWithoutImg(product: Product, id: string){
     return this.angularFirestore.collection(PATH).doc(id).update({
