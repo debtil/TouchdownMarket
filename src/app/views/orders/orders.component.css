@@ -5,7 +5,7 @@
 
 .custom-expansion-panel-header .mat-panel-title {
   font-weight: bold;
-  text-align: center; /* Centraliza o texto do header */
+  text-align: center;
   width: 100%;
 }
 
@@ -18,12 +18,12 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   margin-bottom: 16px;
-  text-align: center; /* Centraliza o texto dentro dos cards */
+  text-align: center;
 }
 
 .order-header {
   display: flex;
-  justify-content: center; /* Centraliza o texto do header */
+  justify-content: center;
   align-items: center;
   margin-bottom: 16px;
   border-bottom: 1px solid #ddd;
@@ -32,61 +32,80 @@
 
 .order-info {
   margin-bottom: 16px;
-  text-align: center; /* Centraliza o texto dentro dos cards */
+  text-align: center;
 }
 
 .cart-items {
   list-style-type: none;
   padding: 0;
-  text-align: center; /* Centraliza o texto dos itens do carrinho */
+  text-align: center;
 }
 
 .cart-item {
   margin-bottom: 8px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 8px;
-  margin-bottom: 16px;
 }
 
 .empty-cart-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-height: 50vh;
+  background-color: #f5f5f5;
+  margin-bottom: 71px;
   text-align: center;
-  padding: 32px;
 }
 
 .empty-cart-content {
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .empty-cart-text h1 {
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 34px;
+  color: #002856;
+  margin-bottom: 10px;
 }
 
 .empty-cart-text p {
-  font-size: 16px;
-  color: #666;
+  font-size: 26px;
+  color: #606060;
+  margin-bottom: 20px;
 }
 
 .empty-cart-image img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 16px;
+  width: 300px; /* Adjust size as needed */
+}
+
+.shop-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #002856;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shop-button:hover {
+  background-color: #004080;
 }
 
 .main-container {
   background-color: #f5f5f5;
-  padding-top: 20px; /* Reduz o padding-top para aproximar o título principal ao topo */
+  padding-top: 20px;
   display: flex;
   justify-content: center;
-  flex-direction: column; /* Adicionado para centralizar o conteúdo verticalmente */
   align-items: center;
+  flex-direction: column;
 }
 
 .accordion-container {
-  max-width: 800px; /* Define uma largura máxima para o container do acordeão */
+  max-width: 800px;
   width: 100%;
 }
 
@@ -94,9 +113,9 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 20px; /* Espaço abaixo do título principal */
+  margin-bottom: 20px;
 }
 
 h1 {
-  text-align: center; /* Centraliza o título principal */
+  text-align: center;
 }
